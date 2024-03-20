@@ -99,6 +99,7 @@
               "src/assets"
             ],
             "styles": [
+              "styles/bootstrap-5.3.3-dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
