@@ -36,6 +36,7 @@
             ],
             "styles": [
               "src/styles.css"
+              "src/"
             ],
             "scripts": [],
             "server": "src/main.server.ts",
