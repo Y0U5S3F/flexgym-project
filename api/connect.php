@@ -5,7 +5,7 @@ $username = "root";
 //utilisateur de la Base de données
 $password = "";
 //mot de passe de l’utilisateur
-$base = "gestion";
+$base = "flexgym";
 //nom de la base de données
 # Création de l’objet connexion
 try{
