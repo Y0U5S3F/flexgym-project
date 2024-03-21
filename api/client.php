@@ -28,20 +28,18 @@ switch ($var) {
         if ($data) {
             ajouterClient($data);
         } else {
-            // Handle invalid JSON data
             http_response_code(400);
-            echo json_encode(array("message" => "Invalid JSON data"));
+            echo json_encode(array("Error: " => "Invalid JSON data"));
         }
         break;
-    case 'PATCH':
+    case 'PUT':
         $data = json_decode(file_get_contents('php://input'), true);
         if ($data && isset($_GET["id"]) && ($_GET["id"] != null)) {
             $id = $_GET["id"];
             modifierClient($id, $data);
         } else {
-            // Handle invalid JSON data or missing ID
             http_response_code(400);
-            echo json_encode(array("message" => "Invalid JSON data or missing ID"));
+            echo json_encode(array("Error: " => "Invalid JSON data or missing ID"));
         }
         break;
 
