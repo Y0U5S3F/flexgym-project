@@ -35,8 +35,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
-              "src/"
+              "src/styles.css",
+              "src/styles/bootstrap-5.3.3-dist/css/bootstrap.min.css"
             ],
             "scripts": [],
             "server": "src/main.server.ts",
