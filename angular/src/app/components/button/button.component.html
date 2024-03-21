@@ -1,1 +1,4 @@
-<button>This is a button</button>
+<button class="btn" [style.background-color]="color">
+  <i *ngIf="icon" [class]="icon"></i> 
+  {{text}}
+</button>
