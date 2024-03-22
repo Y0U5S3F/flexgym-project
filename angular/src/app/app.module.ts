@@ -9,7 +9,11 @@ import { ContactComponent } from './components/contact/contact.component';
 import { JoinComponent } from './components/join/join.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableOffreComponent } from './components/table-offre/table-offre.component';
+
 
 @NgModule({
   declarations: [
@@ -20,11 +24,14 @@ import { TableOffreComponent } from './components/table-offre/table-offre.compon
     JoinComponent,
     FooterComponent,
     NavbarComponent,
+    HeaderComponent,
     TableOffreComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule,
+    NgbModule
   ],
   providers: [
     provideClientHydration()
