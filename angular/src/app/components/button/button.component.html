@@ -1,4 +1,5 @@
 <button class="btn" [style.background-color]="color">
-  <i *ngIf="icon" [class]="icon"></i> 
-  {{text}}
+    <svg class="bi" width="32" height="32" fill="currentColor">
+        <use attr.xlink:href="{{icon}}"/>
+    </svg>  {{text}}
 </button>
