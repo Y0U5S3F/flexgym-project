@@ -1,0 +1,12 @@
+.black-background {
+    background-color: black;
+    color: white; /* Optionally, set text color to white for better visibility */
+  }
+  .btn-yellow {
+    background-color: yellow;
+    color: black; /* Optionally, set text color to black for better visibility */
+    /* Additional styles like padding, border, etc. can be added as needed */
+  }
+  .center-table {
+    margin: 0 auto; /* Set margin to auto to horizontally center the table */
+  }
