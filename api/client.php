@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $var = $_SERVER['REQUEST_METHOD'];
 require 'connect.php';
 require 'charger/chargerClient.php';

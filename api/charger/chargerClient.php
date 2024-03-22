@@ -1,4 +1,5 @@
 <?php
+
 function chargerTousClient() {
     try {
         global $connect;
@@ -18,11 +19,11 @@ function chargerTousClient() {
 
 function chargerClient($id) {
     try {
-        global $connexion;
+        global $connect;
 
-        $request = "SELECT * FROM product WHERE id=:y";
-        $stmt = $connexion->prepare($request);
-        $stmt->bindParam(":x", $id);
+        $request = "SELECT * FROM client WHERE id=:y";
+        $stmt = $connect->prepare($request);
+        $stmt->bindParam(":y", $id);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         

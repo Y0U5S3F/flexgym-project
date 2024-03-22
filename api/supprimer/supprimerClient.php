@@ -1,16 +1,18 @@
 <?php
+
 function supprimerClient($id) {
     try {
-        global $connexion;
+        global $connect;
 
         $req = "DELETE from client where id=:y";
-        $stmt = $connexion->prepare($req);
+        $stmt = $connect->prepare($req);
         $stmt->bindParam(":y", $id);
         $resultat = $stmt->execute();
+        echo $stmt->rowCount();
 
         if($resultat == 0) {
             http_response_code(400);
-            $msg = ["erreur" => "non existant"];
+            $msg = ["erreur" => "client non existant"];
             echo json_encode($msg);
         }
     } catch (PDOException $e) {

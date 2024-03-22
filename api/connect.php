@@ -9,7 +9,7 @@ $base = "flexgym";
 //nom de la base de données
 # Création de l’objet connexion
 try{
-$connexion = new PDO("mysql:host=$servername;dbname=$base",$username,$password);
+$connect = new PDO("mysql:host=$servername;dbname=$base",$username,$password);
 }
 catch(Exception $e)
 { echo $e->getMessage();}
