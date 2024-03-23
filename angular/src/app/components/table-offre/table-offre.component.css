@@ -1,12 +1,45 @@
-.black-background {
-    background-color: black;
-    color: white; /* Optionally, set text color to white for better visibility */
-  }
-  .btn-yellow {
-    background-color: yellow;
-    color: black; /* Optionally, set text color to black for better visibility */
-    /* Additional styles like padding, border, etc. can be added as needed */
-  }
-  .center-table {
-    margin: 0 auto; /* Set margin to auto to horizontally center the table */
-  }
+
+.table-title {
+  margin-top: 94px;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.table-container{
+  display: flex;
+  flex-direction: column;
+  margin-right: 120px;
+  margin-left: 120px;
+}
+
+.striped-table {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+}
+
+.striped-table th,
+.striped-table td {
+  padding: 8px;
+  color: #fff;
+  border-bottom: 1pt solid white;
+  border-top: 1pt solid white;
+  background-color: #000;
+  text-align: center;
+}
+.striped-table th{
+  border-bottom: 1pt solid #fff;
+  border-top: 1pt solid #a4acb5;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+table :last-child >:last-child > td {
+  border-bottom: 1pt solid #fff;
+}
+
