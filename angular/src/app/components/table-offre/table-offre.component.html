@@ -14,34 +14,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Judo</td>
-                <td>Sport Combat</td>
-                <td>50</td>
+              <tr *ngFor="let offre of offres; let i = index">
+                <td>{{ offre.offreID }}</td>
+                <td *ngIf="editingIndex !== i">{{ offre.offreNom }}</td>
+                <td *ngIf="editingIndex === i"><input type="text" [(ngModel)]="offre.offreNom"></td>
+                <td *ngIf="editingIndex !== i">{{ offre.detailOffre }}</td>
+                <td *ngIf="editingIndex === i"><input type="text" [(ngModel)]="offre.detailOffre"></td>
+                <td *ngIf="editingIndex !== i">{{ offre.prixOffre }}</td>
+                <td *ngIf="editingIndex === i"><input type="number" [(ngModel)]="offre.prixOffre"></td>
                 <td>
-                    <app-button text="Modifier" color="#000" textColor="#E7FE58"></app-button>
-                    <app-button text="Supprimer" color="#000" textColor="#DC3545"></app-button>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Judo</td>
-                <td>Sport Combat</td>
-                <td>50</td>
-                <td>
-                  <app-button text="Modifier" color="#000" textColor="#E7FE58"></app-button>
-                  <app-button text="Supprimer" color="#000" textColor="#DC3545"></app-button>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Judo</td>
-                <td>Sport Combat</td>
-                <td>50</td>
-                <td>
-                  <app-button text="Modifier" color="#000" textColor="#E7FE58"></app-button>
-                  <app-button text="Supprimer" color="#000" textColor="#DC3545"></app-button>
+                  <app-button *ngIf="editingIndex !== i" (click)="modifierOffre(i)" text="Modifier" color="#000" textColor="#E7FE58"></app-button>
+                  <div *ngIf="editingIndex === i">
+                    <app-button (click)="enregistrerModification(i)" text="Enregistrer" color="#000" textColor="#E7FE58"></app-button>
+                    <app-button (click)="annulerModification(i)" text="Annuler" color="#000" textColor="#E7FE58"></app-button>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -51,3 +37,50 @@
           </div>
     </div>
 </div>
+
+<!-- <div class="container-fluid container-table">
+  <div class="text-center table-title">
+      <h1>Liste des offres</h1>
+  </div>
+<div class="table-container">
+<table class="striped-table">
+  <thead>
+    <tr>
+      <th>offreID</th>
+      <th>offreNom</th>
+      <th>Detailoffre</th>
+      <th>Prixoffre</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let offre of offres">
+      <td>{{ offre.offreID }}</td>
+      <td *ngIf="!offre.editable">{{ offre.offreNom }}</td>
+      <td *ngIf="!offre.editable">{{ offre.detailOffre }}</td>
+      <td *ngIf="!offre.editable">{{ offre.prixOffre }}</td>
+      <td *ngIf="!offre.editable">
+        <app-button (click)="modifierOffre(offre)" text="Modifier" color="#000" textColor="#E7FE58"></app-button>
+        <app-button (click)="modifierOffre(offre)" text="Supprimer" color="#000" textColor="#DC3545"></app-button>
+      </td>
+      <td *ngIf="offre.editable">
+        <input type="text" formControlName="offreNom">
+      </td>
+      <td *ngIf="offre.editable">
+        <input type="text" formControlName="detailOffre">
+      </td>
+      <td *ngIf="offre.editable">
+        <input type="number" formControlName="prixOffre">
+      </td>
+      <td *ngIf="offre.editable">
+        <app-button (click)="validerModification(offre)" text="Enregistrer" color="#000" textColor="#E7FE58"></app-button>
+        <app-button (click)="offre.editable = false" text="Annuler" color="#000" textColor="#DC3545"></app-button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+    <div class="button-container">
+      <app-add-offre></app-add-offre>
+    </div>
+</div>
+</div> -->
