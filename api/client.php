@@ -28,7 +28,7 @@ switch ($var) {
         }
         break;
     case 'POST':
-        $data = json_decode(file_get_contents('php://input'), true);
+        $data = json_decode(file_get_contents("php://input"), true);
         if ($data) {
             ajouterClient($data);
         } else {
@@ -37,7 +37,7 @@ switch ($var) {
         }
         break;
     case 'PUT':
-        $data = json_decode(file_get_contents('php://input'), true);
+        $data = json_decode(file_get_contents("php://input"), true);
         if ($data && isset($_GET["id"]) && ($_GET["id"] != null)) {
             $id = $_GET["id"];
             modifierClient($id, $data);
