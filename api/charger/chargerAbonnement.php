@@ -1,9 +1,9 @@
 <?php
 
-function chargerTousCour() {
+function chargerTousAbonnement() {
     try {
         global $connect;
-        $req = "SELECT * FROM cour";
+        $req = "SELECT * FROM abonnement";
         $stmt = $connect->prepare($req);
         $stmt->execute();
     
@@ -17,19 +17,19 @@ function chargerTousCour() {
     }
 }
 
-function chargerCour($CourId) {
+function chargerAbonnement($abonnementId) {
     try {
         global $connect;
 
-        $request = "SELECT * FROM cour WHERE CourId=:y";
+        $request = "SELECT * FROM client WHERE abonnementId=:y";
         $stmt = $connect->prepare($request);
-        $stmt->bindParam(":y", $CourId);
+        $stmt->bindParam(":y", $abonnementId);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if($result == null) {
             http_response_code(204);
-            $msg = ["Error: " => "cour inexistant"];
+            $msg = ["Error: " => "client inexistant"];
             echo json_encode($msg);
         } else {
             echo json_encode($result);

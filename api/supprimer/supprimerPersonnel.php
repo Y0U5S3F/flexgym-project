@@ -4,7 +4,7 @@ function supprimerPersonnel($personnelId) {
     try {
         global $connect;
 
-        $req = "DELETE from client where personnelId=:y";
+        $req = "DELETE from personnel where personnelId=:y";
         $stmt = $connect->prepare($req);
         $stmt->bindParam(":y", $personnelId);
         $resultat = $stmt->execute();
@@ -12,7 +12,7 @@ function supprimerPersonnel($personnelId) {
 
         if($resultat == 0) {
             http_response_code(400);
-            $msg = ["erreur" => "client non existant"];
+            $msg = ["erreur" => "personnel non existant"];
             echo json_encode($msg);
         }
     } catch (PDOException $e) {
