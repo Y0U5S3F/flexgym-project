@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
+import { OffreService } from '../../services/offre-service.service';
+import { Offre } from '../../Offre';
 
-interface Offre {
-  offreID: number;
-  offreNom: string;
-  detailOffre: string;
-  prixOffre: number;
-}
 
 @Component({
   selector: 'app-table-offre',
@@ -18,11 +14,11 @@ export class TableOffreComponent {
   editingIndex: number | null = null;
   originalValues: Offre[] = [];
 
-  constructor() {
+  constructor(private offreService: OffreService) {
     this.offres = [
-      { offreID: 1, offreNom: 'Judo', detailOffre: 'Sport Combat', prixOffre: 50 },
-      { offreID: 2, offreNom: 'Karate', detailOffre: 'Art Martial', prixOffre: 60 },
-      { offreID: 3, offreNom: 'Muay Thai', detailOffre: 'Art Martial', prixOffre: 70 }
+      { offreId: 1, offreNom: 'Judo', offreDetail: 'Sport Combat', offrePrix: 50 },
+      { offreId: 2, offreNom: 'Karate', offreDetail: 'Art Martial', offrePrix: 60 },
+      { offreId: 3, offreNom: 'Muay Thai', offreDetail: 'Art Martial', offrePrix: 70 }
     ];
     this.editStates = new Array(this.offres.length).fill(false);
     this.originalValues = JSON.parse(JSON.stringify(this.offres));
@@ -33,8 +29,17 @@ export class TableOffreComponent {
     this.editingIndex = index;
   }
 
-  enregistrerModification(index: number) {
-    this.editingIndex = null; 
+  enregistrerModification(offre: Offre) {
+    this.offreService.updateOffre(offre).subscribe(
+      () => {
+        console.log('Offre updated successfully');
+        this.editingIndex = null; // Exit edit mode
+      },
+      error => {
+        console.error('Error updating offre:', error);
+        // Handle error if needed
+      }
+    );
   }
 
   annulerModification(index: number) {
