@@ -1,12 +1,12 @@
 <?php
 
-function supprimerClient($id) {
+function supprimerClient($clientId) {
     try {
         global $connect;
 
-        $req = "DELETE from client where id=:y";
+        $req = "DELETE from client where clientId=:y";
         $stmt = $connect->prepare($req);
-        $stmt->bindParam(":y", $id);
+        $stmt->bindParam(":y", $clientId);
         $resultat = $stmt->execute();
         echo $stmt->rowCount();
 

@@ -4,15 +4,15 @@ function modifierClient($id, $data){
     try {
         global $connect;
 
-        $req = "UPDATE client SET nom=:nom,prenom=:prenom,email=:email,pass=:pass,tel=:tel,datenais=:datenais where id=:id";
+        $req = "UPDATE clients SET clientNom = :clientNom, clientPrenom = :clientPrenom, clientEmail = :clientEmail, clientPass = :clientPass, clientTel = :clientTel, clientDatenais = :clientDatenais WHERE clientId = :clientId";
         $stmt = $connect->prepare($req);
-        $stmt->bindParam(":id", $id);
-        $stmt->bindParam(":nom", $data["nom"]);
-        $stmt->bindParam(":prenom", $data["prenom"]);
-        $stmt->bindParam(":email", $data["email"]);
-        $stmt->bindParam(":pass", $data["pass"]);
-        $stmt->bindParam(":tel", $data["tel"]);
-        $stmt->bindParam(":datenais", $data["datenais"]);
+        $stmt->bindParam(':clientNom', $data['clientNom']);
+        $stmt->bindParam(':clientPrenom', $data['clientPrenom']);
+        $stmt->bindParam(':clientEmail', $data['clientEmail']);
+        $stmt->bindParam(':clientPass', $data['clientPass']);
+        $stmt->bindParam(':clientTel', $data['clientTel']);
+        $stmt->bindParam(':clientDatenais', $data['clientDatenais']);
+        $stmt->bindParam(':clientId', $id);
         $resultat = $stmt->execute();
         echo $stmt->rowCount();
     } catch (PDOException $e) {

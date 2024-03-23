@@ -1,6 +1,6 @@
 <?php
 
-function chargerTousClient() {
+function chargerTousPersonnel() {
     try {
         global $connect;
         $req = "SELECT * FROM client";
@@ -17,13 +17,13 @@ function chargerTousClient() {
     }
 }
 
-function chargerClient($id) {
+function chargerPersonnel($personnelId) {
     try {
         global $connect;
 
-        $request = "SELECT * FROM client WHERE id=:y";
+        $request = "SELECT * FROM client WHERE personnelId=:y";
         $stmt = $connect->prepare($request);
-        $stmt->bindParam(":y", $id);
+        $stmt->bindParam(":y", $personnelId);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         

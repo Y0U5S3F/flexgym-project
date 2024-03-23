@@ -17,13 +17,13 @@ function chargerTousClient() {
     }
 }
 
-function chargerClient($id) {
+function chargerClient($clientId) {
     try {
         global $connect;
 
-        $request = "SELECT * FROM client WHERE id=:y";
+        $request = "SELECT * FROM client WHERE clientId=:y";
         $stmt = $connect->prepare($request);
-        $stmt->bindParam(":y", $id);
+        $stmt->bindParam(":y", $clientId);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         
