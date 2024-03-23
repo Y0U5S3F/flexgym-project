@@ -8,12 +8,17 @@ import {Offre } from '../Offre';
 })
 export class OffreService {
 
-  private apiUrl = 'http://your-api-url';
+  private apiUrl = 'http://localhost/api/offre.php/';
 
   constructor(private http: HttpClient) { }
 
   getOffres(): Observable<Offre[]> {
     const url = `${this.apiUrl}`;
+    return this.http.get<Offre[]>(url);
+  }
+
+  getOffre(offreId: number): Observable<Offre[]> {
+    const url = `${this.apiUrl}${offreId}`;
     return this.http.get<Offre[]>(url);
   }
 

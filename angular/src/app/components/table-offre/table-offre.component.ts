@@ -15,14 +15,21 @@ export class TableOffreComponent {
   originalValues: Offre[] = [];
 
   constructor(private offreService: OffreService) {
-    this.offres = [
-      { offreId: 1, offreNom: 'Judo', offreDetail: 'Sport Combat', offrePrix: 50 },
-      { offreId: 2, offreNom: 'Karate', offreDetail: 'Art Martial', offrePrix: 60 },
-      { offreId: 3, offreNom: 'Muay Thai', offreDetail: 'Art Martial', offrePrix: 70 }
-    ];
+    this.offres = [];
     this.editStates = new Array(this.offres.length).fill(false);
     this.originalValues = JSON.parse(JSON.stringify(this.offres));
 
+  }
+
+  ngOninit(){
+    this.fetchCountry()
+  }
+
+  fetchCountry(){
+    this.offreService.getOffres().subscribe(data=>{
+      this.offres=data
+
+    })
   }
 
   modifierOffre(index: number) {
@@ -30,16 +37,16 @@ export class TableOffreComponent {
   }
 
   enregistrerModification(offre: Offre) {
-    this.offreService.updateOffre(offre).subscribe(
-      () => {
+    this.offreService.updateOffre(offre).subscribe({
+      next: () => {
         console.log('Offre updated successfully');
         this.editingIndex = null; // Exit edit mode
       },
-      error => {
+      error: (error) => {
         console.error('Error updating offre:', error);
         // Handle error if needed
       }
-    );
+    });
   }
 
   annulerModification(index: number) {
