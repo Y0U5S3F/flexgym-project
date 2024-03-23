@@ -43,3 +43,6 @@ table :last-child >:last-child > td {
   border-bottom: 1pt solid #fff;
 }
 
+.edit-mode {
+  background-color: lightblue;
+}
