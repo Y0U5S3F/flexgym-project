@@ -1,0 +1,16 @@
+.footer-container {
+  background-color: #0F1114;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-content {
+  text-align: center;
+}
+
+.footer-text {
+  color: white;
+  margin: 0;
+}

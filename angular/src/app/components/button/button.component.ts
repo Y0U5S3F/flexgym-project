@@ -9,5 +9,6 @@ export class ButtonComponent {
   @Input()
   @Input() text!: string;
   @Input() color: string = '#E7FE58'; 
+  @Input() textColor: string= '#fff';
   // @Input() icon :string ="";
 }
