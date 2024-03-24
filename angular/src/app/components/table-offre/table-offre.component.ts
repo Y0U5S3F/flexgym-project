@@ -36,10 +36,24 @@ export class TableOffreComponent implements OnInit{
     });
   }
   onEdit(row:any){
+    this.offreObject.id=row.id;
     this.formValue.controls['offreNom'].setValue(row.offreNom);
     this.formValue.controls['offreDetail'].setValue(row.offreDetail);
     this.formValue.controls['offrePrix'].setValue(row.offrePrix);
 
+  }
+
+  updateOffre(){
+    this.offreObject.offreNom=this.formValue.value.offreNom;
+    this.offreObject.offrePrix=this.formValue.value.offrePrix;
+    this.offreObject.offreDetail=this.formValue.value.offreDetail;
+    this.api.updateOffre(this.offreObject,this.offreObject.id)
+    .subscribe(res=>{
+      alert("updated offre");
+      let ref = document.getElementById("cancel");
+      ref?.click();
+      this.formValue.reset();
+    })
   }
 
 }

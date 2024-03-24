@@ -40,7 +40,7 @@ export class OffreService {
 
   //Put
   updateOffre(data:any,id:number){
-    return this.http.put<any>(`${this.apiUrl}/id`, data)
+    return this.http.put<any>(`${this.apiUrl}/${id}`, data)
     .pipe(map((res:any)=>{
       return res;
     }))
