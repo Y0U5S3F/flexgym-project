@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OffreService } from '../../services/offre-service.service';
+import { SharedOffreService } from '../../services/shared/shared-offre.service';
 import { Offre } from '../../Offre';
 
 
@@ -8,44 +9,26 @@ import { Offre } from '../../Offre';
   templateUrl: './table-offre.component.html',
   styleUrls: ['./table-offre.component.css']
 })
-export class TableOffreComponent {
-  offres: Offre[] = [];
-  editStates: boolean[] = [];
-  editingIndex: number | null = null;
-  originalValues: Offre[] = [];
-
-  constructor(private offreService: OffreService) {
-    this.offres = [
-      { offreId: 1, offreNom: 'Judo', offreDetail: 'Sport Combat', offrePrix: 50 },
-      { offreId: 2, offreNom: 'Karate', offreDetail: 'Art Martial', offrePrix: 60 },
-      { offreId: 3, offreNom: 'Muay Thai', offreDetail: 'Art Martial', offrePrix: 70 }
-    ];
-    this.editStates = new Array(this.offres.length).fill(false);
-    this.originalValues = JSON.parse(JSON.stringify(this.offres));
-
+export class TableOffreComponent implements OnInit{
+  offreData !: any;
+  constructor(private api : OffreService, private sharedService: SharedOffreService ) {
+  }
+  ngOnInit(): void {
+      this.getAllOffre();
+  }
+  getAllOffre(){
+    this.api.getOffre()
+    .subscribe(res=>{
+      this.offreData = res;
+    })
   }
 
-  modifierOffre(index: number) {
-    this.editingIndex = index;
+  private subscribteToRefresh(){
+    this.sharedService.refreshTable$.subscribe(() => {
+      this.getAllOffre();
+    });
   }
 
-  enregistrerModification(offre: Offre) {
-    this.offreService.updateOffre(offre).subscribe(
-      () => {
-        console.log('Offre updated successfully');
-        this.editingIndex = null; // Exit edit mode
-      },
-      error => {
-        console.error('Error updating offre:', error);
-        // Handle error if needed
-      }
-    );
-  }
-
-  annulerModification(index: number) {
-    this.offres[index] = JSON.parse(JSON.stringify(this.originalValues[index])); 
-    this.editingIndex = null; 
-  }
 }
 
 // import { Component } from '@angular/core';

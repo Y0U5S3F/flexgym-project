@@ -1,20 +1,36 @@
-<div class="container-fluid container-table">
-        <div class="text-center table-title">
+    <div class="text-center table-title">
             <h1>Liste des offres</h1>
-        </div>
+    </div>
     <div class="table-container">
         <table class="striped-table">
             <thead>
               <tr>
-                <th>offreID</th>
-                <th>offreNom</th>
-                <th>Detailoffre</th>
-                <th>Prixoffre</th>
-                <th>Actions</th>
+                <th scope="col">offreID</th>
+                <th scope="col">offreNom</th>
+                <th scope="col">Detailoffre</th>
+                <th scope="col">Prixoffre</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let offre of offres; let i = index">
+              <tr *ngFor="let row of offreData">
+                <td>{{row.id}}</td>
+                <td>{{row.offreNom}}</td>
+                <td>{{row.offreDetail}}</td>
+                <td>{{row.offrePrix}}</td>
+                <td>
+                  <app-button text="Modifier" color="#000" textColor="#E7FE58"></app-button>
+                  <app-button text="Annuler" color="#000" textColor="#DC3545"></app-button>
+                </td>
+              </tr>
+            </tbody> 
+            </table>
+            <div class="button-container">
+              <app-add-offre></app-add-offre>
+            </div>
+      </div>
+  
+              <!-- <tr *ngFor="let offre of offres; let i = index">
                 <td>{{ offre.offreId }}</td>
                 <td *ngIf="editingIndex !== i">{{ offre.offreNom }}</td>
                 <td *ngIf="editingIndex === i"><input type="text" [(ngModel)]="offre.offreNom"></td>
@@ -30,13 +46,12 @@
                   </div>
                 </td>
               </tr>
-            </tbody>
-          </table>
+            </tbody> -->
+          <!-- </table>
           <div class="button-container">
             <app-add-offre></app-add-offre>
           </div>
-    </div>
-</div>
+    </div> -->
 
 <!-- <div class="container-fluid container-table">
   <div class="text-center table-title">
