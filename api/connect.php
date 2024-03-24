@@ -12,5 +12,8 @@ try{
 $connect = new PDO("mysql:host=$servername;dbname=$base",$username,$password);
 }
 catch(Exception $e)
-{ echo $e->getMessage();}
+{
+    $errorMessage = $e->getMessage();
+    error_log($errorMessage);
+}
 ?>

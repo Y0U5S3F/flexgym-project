@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { OffreService } from '../../services/offre-service.service';
+import { OffreService } from '../../services/offre-service.service'
 import { Offre } from '../../Offre';
 
 
@@ -9,50 +9,23 @@ import { Offre } from '../../Offre';
   styleUrls: ['./table-offre.component.css']
 })
 export class TableOffreComponent {
-  offres: Offre[] = [];
-  editStates: boolean[] = [];
-  editingIndex: number | null = null;
-  originalValues: Offre[] = [];
+  offres!: Offre[];
 
   constructor(private offreService: OffreService) {
-    this.offres = [];
-    this.editStates = new Array(this.offres.length).fill(false);
-    this.originalValues = JSON.parse(JSON.stringify(this.offres));
-
   }
 
-  ngOninit(){
-    this.fetchCountry()
+  ngOnInit(){
+    this.fetchOffre();
   }
 
-  fetchCountry(){
-    this.offreService.getOffres().subscribe(data=>{
+  fetchOffre(){
+    this.offreService.getOffers().subscribe(data=>{
       this.offres=data
-
     })
   }
 
-  modifierOffre(index: number) {
-    this.editingIndex = index;
-  }
 
-  enregistrerModification(offre: Offre) {
-    this.offreService.updateOffre(offre).subscribe({
-      next: () => {
-        console.log('Offre updated successfully');
-        this.editingIndex = null; // Exit edit mode
-      },
-      error: (error) => {
-        console.error('Error updating offre:', error);
-        // Handle error if needed
-      }
-    });
-  }
 
-  annulerModification(index: number) {
-    this.offres[index] = JSON.parse(JSON.stringify(this.originalValues[index])); 
-    this.editingIndex = null; 
-  }
 }
 
 // import { Component } from '@angular/core';

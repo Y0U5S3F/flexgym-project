@@ -16,19 +16,19 @@
       <tbody>
         <tr *ngFor="let offre of offres; let i = index">
           <td>{{ offre.offreId }}</td>
-          <td *ngIf="editingIndex !== i">{{ offre.offreNom }}</td>
-          <td *ngIf="editingIndex === i"><input type="text" [(ngModel)]="offre.offreNom"></td>
-          <td *ngIf="editingIndex !== i">{{ offre.offreDetail }}</td>
-          <td *ngIf="editingIndex === i"><input type="text" [(ngModel)]="offre.offreDetail"></td>
-          <td *ngIf="editingIndex !== i">{{ offre.offrePrix }}</td>
-          <td *ngIf="editingIndex === i"><input type="number" [(ngModel)]="offre.offrePrix"></td>
+          <td>{{ offre.offreNom }}</td>
+          <td><input type="text" [(ngModel)]="offre.offreNom"></td>
+          <td>{{ offre.offreDetail }}</td>
+          <td><input type="text" [(ngModel)]="offre.offreDetail"></td>
+          <td>{{ offre.offrePrix }}</td>
+          <td><input type="number" [(ngModel)]="offre.offrePrix"></td>
           <td>
-            <app-button *ngIf="editingIndex !== i" (click)="modifierOffre(i)" text="Modifier"
+            <app-button  text="Modifier"
               color="#000" textColor="#E7FE58"></app-button>
-            <div *ngIf="editingIndex === i">
-              <app-button (click)="enregistrerModification(offre)" text="Enregistrer" color="#000"
+            <div>
+              <app-button text="Enregistrer" color="#000"
                 textColor="#E7FE58"></app-button>
-              <app-button (click)="annulerModification(i)" text="Annuler" color="#000"
+              <app-button text="Annuler" color="#000"
                 textColor="#DC3545"></app-button>
             </div>
           </td>

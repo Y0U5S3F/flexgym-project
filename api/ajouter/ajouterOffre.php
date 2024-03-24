@@ -1,4 +1,4 @@
-.<?php 
+<?php 
 
 function ajouterOffre($data){
     try {
