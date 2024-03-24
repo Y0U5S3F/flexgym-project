@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OffreService } from '../../services/offre-service.service';
-import { SharedOffreService } from '../../services/shared/shared-offre.service';
 import { Offre } from '../../Offre';
+import {FormBuilder,FormGroup} from '@angular/forms'
+
 
 
 @Component({
@@ -11,10 +12,17 @@ import { Offre } from '../../Offre';
 })
 export class TableOffreComponent implements OnInit{
   offreData !: any;
-  constructor(private api : OffreService, private sharedService: SharedOffreService ) {
+  formValue !: FormGroup;
+  offreObject:Offre = new Offre();
+  constructor(private api : OffreService, private formbuilder: FormBuilder) {
   }
   ngOnInit(): void {
       this.getAllOffre();
+      this.formValue = this.formbuilder.group({
+        offreNom : [''],
+        offreDetail : [''],
+        offrePrix : ['']
+      })
   }
   getAllOffre(){
     this.api.getOffre()
@@ -22,11 +30,16 @@ export class TableOffreComponent implements OnInit{
       this.offreData = res;
     })
   }
-
-  private subscribteToRefresh(){
-    this.sharedService.refreshTable$.subscribe(() => {
-      this.getAllOffre();
+  deleteOffres(row:any){
+    this.api.deleteOffre(row.id).subscribe(() => {
+      this.getAllOffre(); 
     });
+  }
+  onEdit(row:any){
+    this.formValue.controls['offreNom'].setValue(row.offreNom);
+    this.formValue.controls['offreDetail'].setValue(row.offreDetail);
+    this.formValue.controls['offrePrix'].setValue(row.offrePrix);
+
   }
 
 }

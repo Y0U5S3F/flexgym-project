@@ -1,66 +1,19 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
-      "offreNom": "Calisthenics",
-      "offreDetail": "Sport",
-      "offrePrix": "90",
-      "id": 2
-    },
-    {
-      "offreNom": "Calisthenics",
-      "offreDetail": "Sport",
-      "offrePrix": "90",
-      "id": 3
-    },
-    {
-      "offreNom": "Calisthenics",
-      "offreDetail": "Sport",
-      "offrePrix": "90",
-      "id": 4
-    },
-    {
-      "offreNom": "Box ",
-      "offreDetail": "Sport de combat",
-      "offrePrix": "60",
-      "id": 5
-    },
-    {
-      "offreNom": "Zumba",
-      "offreDetail": "Dance",
-      "offrePrix": "98",
-      "id": 6
-    },
-    {
-      "offreNom": "Yoga",
-      "offreDetail": "Femme",
-      "offrePrix": "80",
-      "id": 7
-    },
-    {
-      "offreNom": "dsad",
-      "offreDetail": "ds",
-      "offrePrix": "33",
-      "id": 8
-    },
-    {
       "offreNom": "Kick",
-      "offreDetail": "Combat ",
-      "offrePrix": "90",
-      "id": 9
-    }
-  ],
-  "comments": [
+      "offreDetail": "Sport de Combat",
+      "offrePrix": "50",
+      "id": 1
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "offreNom": "Judo",
+      "offreDetail": "Sport de Combat",
+      "offrePrix": "50",
+      "id": 2
     }
   ],
+  "comments": [],
   "profile": {
     "name": "typicode"
   }

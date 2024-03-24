@@ -32,7 +32,7 @@ export class OffreService {
 
   //Delete
   deleteOffre(id: number){
-    return this.http.delete<any>(`${this.apiUrl}/id`)
+    return this.http.delete<any>(`${this.apiUrl}/${id}`)
     .pipe(map((res:any)=>{
       return res;
     }))
