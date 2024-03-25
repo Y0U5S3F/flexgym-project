@@ -11,7 +11,7 @@ import {map} from 'rxjs/operators';
 
 export class OffreService {
 
-  private apiUrl = 'http://localhost:80/offre.php';
+  private apiUrl = 'https://www.jsonkeeper.com/b/S7H6';
 
   constructor(private http: HttpClient) { }
 
