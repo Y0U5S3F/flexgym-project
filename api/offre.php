@@ -1,18 +1,20 @@
 <?php
+
 header("Access-Control-Allow-Origin: http://localhost:4200");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Content-type:application/json");
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$var = $_SERVER['REQUEST_METHOD'];
 require 'connect.php';
 require 'charger/chargerOffre.php';
 require 'supprimer/supprimerOffre.php';
 require 'ajouter/ajouterOffre.php';
 require 'modifier/modifierOffre.php';
-header("Content-type:application/json");
+
+$var = $_SERVER['REQUEST_METHOD'];
 
 switch ($var) {
     case 'GET':
@@ -48,6 +50,4 @@ switch ($var) {
             echo json_encode(array("Error: " => "Invalid JSON data or missing ID"));
         }
         break;
-
 }
-

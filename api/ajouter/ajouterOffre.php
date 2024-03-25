@@ -13,6 +13,14 @@ function ajouterOffre($data){
         $stmt->bindParam(":cour", $data["offreCour"]);
         $stmt->execute();
 
+        if($stmt->rowCount() == 0) {
+            http_response_code(400);
+            $msg = ["erreur" => "Offre non Crée"];
+            echo json_encode($msg);
+        } else {
+            echo json_encode(['success' => 'Offre Crée']);
+        }
+
         } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
         }

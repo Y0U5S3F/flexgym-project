@@ -17,6 +17,14 @@ function modifierOffre($offreId, $data){
 
         $connect->exec("SET FOREIGN_KEY_CHECKS=1;");
 
+        if($stmt->rowCount() == 0) {
+            http_response_code(400);
+            $msg = ["erreur" => "Offre non existant"];
+            echo json_encode($msg);
+        } else {
+            echo json_encode(['success' => 'Offre modifié']);
+        }
+
     } catch (PDOException $e) {
         die("Error: " . $e->getMessage());
     }

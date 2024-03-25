@@ -1,16 +1,14 @@
 <?php
-# Définition des paramètres de connexion
-$servername = "localhost"; //adresse du serveur de la Base de données
-$username = "root";
-//utilisateur de la Base de données
-$password = "";
-//mot de passe de l’utilisateur
-$base = "flexgym";
-//nom de la base de données
-# Création de l’objet connexion
+
+$host = 'localhost';
+$db   = 'flexgym';
+$user = 'root';
+$pass = '';
+$charset = 'utf8mb4';
+
 try{
-$connect = new PDO("mysql:host=$servername;dbname=$base",$username,$password);
-}
+    $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+    $connect = new PDO($dsn, $user, $pass);}
 catch(Exception $e)
 {
     $errorMessage = $e->getMessage();
