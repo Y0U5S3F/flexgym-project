@@ -20,6 +20,9 @@ import { OffreAdminComponent } from './pages/offre-admin/offre-admin.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderHomeComponent } from './components/header-home/header-home.component';
+import { HeroComponent } from './pages/home/component/hero/hero.component';
+import { FeaturesComponent } from './pages/home/component/features/features.component';
+import { InfoComponent } from './pages/home/component/info/info.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { HeaderHomeComponent } from './components/header-home/header-home.compon
     OffreAdminComponent,
     HomeComponent,
     LoginComponent,
-    HeaderHomeComponent
+    HeaderHomeComponent,
+    HeroComponent,
+    FeaturesComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,
