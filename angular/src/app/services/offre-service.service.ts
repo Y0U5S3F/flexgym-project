@@ -10,7 +10,7 @@ import {map} from 'rxjs/operators';
 
 export class OffreService {
 
-  private apiUrl = 'http://localhost:3000/posts';
+  private apiUrl = 'https://jsonkeeper.com/b/S7H6';
 
   constructor(private http: HttpClient) { }
 

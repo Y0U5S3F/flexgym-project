@@ -1,16 +1,16 @@
 {
   "posts": [
     {
+      "id": 1,
       "offreNom": "Kick",
       "offreDetail": "Sport de Combat",
-      "offrePrix": "50",
-      "id": 1
+      "offrePrix": "500"
     },
     {
       "id": 2,
-      "offreNom": "Judo",
-      "offreDetail": "a",
-      "offrePrix": "50"
+      "offreNom": "dsa",
+      "offreDetail": "dsad",
+      "offrePrix": "22"
     }
   ],
   "comments": [],

@@ -16,6 +16,10 @@ import { TableOffreComponent } from './components/table-offre/table-offre.compon
 import { AddOffreComponent } from './components/add-offre/add-offre.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { OffreAdminComponent } from './pages/offre-admin/offre-admin.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { HeaderHomeComponent } from './components/header-home/header-home.component';
 
 
 @NgModule({
@@ -29,7 +33,11 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     HeaderComponent,
     TableOffreComponent,
-    AddOffreComponent
+    AddOffreComponent,
+    OffreAdminComponent,
+    HomeComponent,
+    LoginComponent,
+    HeaderHomeComponent
   ],
   imports: [
     BrowserModule,
