@@ -1,7 +1,9 @@
-import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Offre } from '../Offre';
+import {Offre } from '../Offre';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +11,46 @@ import { Offre } from '../Offre';
 
 export class OffreService {
 
-  constructor(private httpClient: HttpClient) { }
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json'
-    })
-  };
-  
-  getOffers(): Observable<Offre[]>{
-    return this.httpClient.get<Offre[]>('http://localhost/api/offre.php/', {headers: this.httpOptions.headers});
+  private apiUrl = 'http://localhost:80/offre.php';
+
+  constructor(private http: HttpClient) { }
+
+  //Post
+  createOffre(data:any){
+    return this.http.post<any>(this.apiUrl, data)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+  //Get
+  getOffres(){
+    return this.http.get<any>(this.apiUrl)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+  getOffre(id: number){
+    return this.http.get<any>(`${this.apiUrl}?offreId=${id}`)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+  //Delete
+  deleteOffre(id: number){
+    return this.http.delete<any>(`${this.apiUrl}?offreId=${id}`)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+  //Put
+  updateOffre(data:any,id:number){
+    return this.http.put<any>(`${this.apiUrl}?offreId=${id}`, data)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
   }
 }

@@ -1,42 +1,71 @@
-<div class="container-fluid container-table">
-  <div class="text-center table-title">
-    <h1>Liste des offres</h1>
+<div class="text-center table-title">
+  <h1>Liste des offres</h1>
+</div>
+<div class="table-container">
+<table class="striped-table">
+  <thead>
+    <tr>
+      <th scope="col">offreID</th>
+      <th scope="col">offreNom</th>
+      <th scope="col">Detailoffre</th>
+      <th scope="col">Prixoffre</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of offreData">
+      <td>{{row.offreId}}</td>
+      <td>{{row.offreNom}}</td>
+      <td>{{row.offreDetail}}</td>
+      <td>{{row.offrePrix}}</td>
+      <td>
+        <app-button (click)="onEdit(row)" text="Modifier" data-bs-toggle="modal" data-bs-target="#modifierModal" color="#000" textColor="#E7FE58"></app-button>
+        <app-button (click)="deleteOffres(row)" text="Annuler" color="#000" textColor="#DC3545"></app-button>
+      </td>
+    </tr>
+  </tbody> 
+  </table>
+  <div class="button-container">
+    <app-add-offre></app-add-offre>
   </div>
-  <div class="table-container">
-    <table class="striped-table">
-      <thead>
-        <tr>
-          <th>offreID</th>
-          <th>offreNom</th>
-          <th>Detailoffre</th>
-          <th>Prixoffre</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let offre of offres; let i = index">
-          <td>{{ offre.offreId }}</td>
-          <td>{{ offre.offreNom }}</td>
-          <td><input type="text" [(ngModel)]="offre.offreNom"></td>
-          <td>{{ offre.offreDetail }}</td>
-          <td><input type="text" [(ngModel)]="offre.offreDetail"></td>
-          <td>{{ offre.offrePrix }}</td>
-          <td><input type="number" [(ngModel)]="offre.offrePrix"></td>
-          <td>
-            <app-button  text="Modifier"
-              color="#000" textColor="#E7FE58"></app-button>
-            <div>
-              <app-button text="Enregistrer" color="#000"
-                textColor="#E7FE58"></app-button>
-              <app-button text="Annuler" color="#000"
-                textColor="#DC3545"></app-button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="button-container">
-      <app-add-offre></app-add-offre>
-    </div>
+</div>
+
+<div class="modal fade" offreId="modifierModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<button type="button" offreId="cancel"class="btn-close btn-close-white btn-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+<h1 class="modal-title " offreId="exampleModalLabel">Add Clients</h1>
+<div class="modal-body">
+<form [formGroup]="formValue">
+  <div class="input-group">
+      <span class="input-group-text">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-body-text" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M0 .5A.5.5 0 0 1 .5 0h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 0 .5m0 2A.5.5 0 0 1 .5 2h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m9 0a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-9 2A.5.5 0 0 1 .5 4h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m5 0a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m7 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-12 2A.5.5 0 0 1 .5 6h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8 0a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-8 2A.5.5 0 0 1 .5 8h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m7 0a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-7 2a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+        </svg>
+      </span>
+      <input type="text" formControlName="offreNom" class="form-control" placeholder="Nom" required>
   </div>
+  <div class="input-group">
+      <span class="input-group-text">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+          <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z"/>
+        </svg>
+      </span>
+      <input type="text" formControlName="offreDetail" class="form-control" placeholder="Detail" required>
+  </div>
+  <div class="input-group">
+      <span class="input-group-text">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+          <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+        </svg>
+      </span>
+      <input type="text" formControlName="offrePrix" class="form-control"placeholder="Prix" required>
+  </div>
+  <div class="d-grid" >
+      <button type="submit"  (click)="updateOffre()"class="btn modal-button" >Save</button>
+  </div>
+</form>
+</div>
+</div>
+</div>
 </div>
