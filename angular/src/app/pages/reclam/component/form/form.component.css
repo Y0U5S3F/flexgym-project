@@ -1,0 +1,31 @@
+h2 {
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom:40px;
+    color: white;
+    text-align: center;
+}
+
+label {
+    color: white;
+}
+
+.btn-primary {
+    background-color: #E7FE58;
+    color: #000; /* Text color for contrast */
+    width: 10%; /* Make the button full width */
+    margin-top: 20px; 
+}
+
+.container{
+    margin-top: 94px;
+
+}
+
+
+/* .form-container {
+    background-color: #0d0e10; 
+    border-radius: 10px; 
+    border: 1px solid #4b4b4b; 
+    padding: 40px; 
+} */

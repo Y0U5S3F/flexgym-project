@@ -25,6 +25,8 @@ import { FeaturesComponent } from './pages/home/component/features/features.comp
 import { InfoComponent } from './pages/home/component/info/info.component';
 import { CalendarClientComponent } from './pages/calendar-client/calendar-client.component';
 import { TableCalendarComponent } from './components/table-calendar/table-calendar.component';
+import { ReclamComponent } from './pages/reclam/reclam.component';
+import { FormComponent } from './pages/reclam/component/form/form.component';
 
 
 
@@ -48,7 +50,9 @@ import { TableCalendarComponent } from './components/table-calendar/table-calend
     FeaturesComponent,
     InfoComponent,
     CalendarClientComponent,
-    TableCalendarComponent
+    TableCalendarComponent,
+    ReclamComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
