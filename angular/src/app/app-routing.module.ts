@@ -19,7 +19,7 @@ const routes: Routes = [
     component: OffreAdminComponent
   },
   {
-    path: 'calendar',
+    path: 'calendar-client',
     component: CalendarClientComponent
   }
 ];

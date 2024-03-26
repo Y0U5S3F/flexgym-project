@@ -1,14 +1,14 @@
 <header class="container-fluid header-css">
     <div class="row align-items-center header-content">
         <div class="col-md-auto">
-            <a href="#" class="logo">Flex <span class="green-span">Gym</span></a>
+            <a href="/" class="logo">Flex <span class="green-span">Gym</span></a>
         </div>
         <div class="col-md">
             <nav class="text-center">
                 <ul class="nav-links">
-                    <li><a href="#">Offres</a></li>
-                    <li><a href="#">Courses</a></li>
-                    <li><a routerLink="calendar">Calendar</a></li>
+                    <li><a [routerLink]="['/']" routerLinkActive="active">Offres</a></li>
+                    <li><a [routerLink]="['/']" routerLinkActive="active">Courses</a></li>
+                    <li><a [routerLink]="['/calendar-client']" routerLinkActive="active">Calendar</a></li>
                 </ul>
             </nav>
         </div>
