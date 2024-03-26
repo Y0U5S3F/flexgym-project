@@ -1,24 +1,24 @@
 <?php
 
-function supprimerOffre($offreId) {
+function supprimerCour($courId) {
     try {
         global $connect;
 
         $connect->exec("SET FOREIGN_KEY_CHECKS=0;");
 
-        $req = "DELETE from offre where offreId=:y";
+        $req = "DELETE from cour where courId=:y";
         $stmt = $connect->prepare($req);
-        $stmt->bindParam(":y", $offreId);
+        $stmt->bindParam(":y", $courId);
         $stmt->execute();
 
         $connect->exec("SET FOREIGN_KEY_CHECKS=1;");
 
         if($stmt->rowCount() == 0) {
             http_response_code(400);
-            $msg = ["erreur" => "offre non existant"];
+            $msg = ["erreur" => "cour non existant"];
             echo json_encode($msg);
         } else {
-            echo json_encode(['success' => 'Offre supprime']);
+            echo json_encode(['success' => 'cour supprime']);
         }
     } catch (PDOException $e) {
         $connect->exec("SET FOREIGN_KEY_CHECKS=1;");

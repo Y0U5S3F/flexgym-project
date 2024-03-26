@@ -1,34 +1,68 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Offre } from '../Offre';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class OffreService {
 
-  private apiUrl = 'http://your-api-url';
+  private apiUrlOffre = 'http://localhost/api/offre.php';
+  private apiUrlCour = 'http://localhost/api/cour.php';
+  private apiUrlPersonnel = 'http://localhost/api/personnel.php';
+  private apiUrlClient = 'http://localhost/api/client.php';
+
+
 
   constructor(private http: HttpClient) { }
 
-  getOffres(): Observable<Offre[]> {
-    const url = `${this.apiUrl}`;
-    return this.http.get<Offre[]>(url);
+  //Post
+  createOffre(data:any){
+    return this.http.post<any>(this.apiUrlOffre, data)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
   }
 
-  updateOffre(offre: Offre): Observable<Offre> {
-    const url = `${this.apiUrl}${offre.offreId}`;
-    return this.http.put<Offre>(url, offre);
+  //Get
+  getOffres(){
+    return this.http.get<any>(this.apiUrlOffre)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
   }
 
-  createOffre(offre: Offre): Observable<Offre> {
-    const url = `${this.apiUrl}`;
-    return this.http.post<Offre>(url, offre);
+  getCours(){
+    return this.http.get<any>(this.apiUrlCour)
+    .pipe(map((res:any)=>{
+      return res; 
+    }))
   }
 
-  deleteOffre(offreId: number): Observable<void> {
-    const url = `${this.apiUrl}${offreId}`;
-    return this.http.delete<void>(url);
+  getOffre(id: number){
+    return this.http.get<any>(`${this.apiUrlOffre}?offreId=${id}`)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+  //Delete
+  deleteOffre(id: number){
+    return this.http.delete<any>(`${this.apiUrlOffre}?offreId=${id}`)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+  //Put
+  updateOffre(data:any,id:number){
+    return this.http.put<any>(`${this.apiUrlOffre}?offreId=${id}`, data)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
   }
 }

@@ -9,32 +9,32 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require 'connect.php';
-require 'charger/chargerOffre.php';
-require 'supprimer/supprimerOffre.php';
-require 'ajouter/ajouterOffre.php';
-require 'modifier/modifierOffre.php';
+require 'charger/chargerCour.php';
+require 'supprimer/supprimerCour.php';
+require 'ajouter/ajouterCour.php';
+require 'modifier/modifierCour.php';
 
 $var = $_SERVER['REQUEST_METHOD'];
 
 switch ($var) {
     case 'GET':
-        if(isset($_GET["offreId"]) && ($_GET['offreId'] != null)) {
-            $offreId = $_GET["offreId"];
-            chargerOffre($offreId);
+        if(isset($_GET["courId"]) && ($_GET['courId'] != null)) {
+            $courId = $_GET["courId"];
+            chargerCour($courId);
         } else {
-            chargerTousOffre();
+            chargerTousCour();
         }
         break;
     case 'DELETE':
-        if(isset($_GET["offreId"]) && ($_GET["offreId"] != null)) {
-            $offreId = $_GET["offreId"];
-            supprimerOffre($offreId);
+        if(isset($_GET["courId"]) && ($_GET["courId"] != null)) {
+            $courId = $_GET["courId"];
+            supprimerCour($courId);
         }
         break;
     case 'POST':
         $data = json_decode(file_get_contents('php://input'), true);
         if ($data) {
-            ajouterOffre($data);
+            ajouterCour($data);
         } else {
             http_response_code(400);
             echo json_encode(array("Error: " => "Invalid JSON data"));
@@ -42,9 +42,9 @@ switch ($var) {
         break;
     case 'PUT':
         $data = json_decode(file_get_contents('php://input'), true);
-        if ($data && isset($_GET["offreId"]) && ($_GET["offreId"] != null)) {
-            $offreId = $_GET["offreId"];
-            modifierOffre($offreId, $data);
+        if ($data && isset($_GET["courId"]) && ($_GET["courId"] != null)) {
+            $courId = $_GET["courId"];
+            modifierCour($courId, $data);
         } else {
             http_response_code(400);
             echo json_encode(array("Error: " => "Invalid JSON data or missing ID"));

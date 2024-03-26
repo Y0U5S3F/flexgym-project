@@ -1,4 +1,10 @@
 <?php
+header("Access-Control-Allow-Origin: http://localhost:4200");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 $var = $_SERVER['REQUEST_METHOD'];
 require 'connect.php';
@@ -24,7 +30,7 @@ switch ($var) {
         }
         break;
     case 'POST':
-        $data = json_decode(file_get_contents('php://input'), true);
+        $data = json_decode(file_get_contents("php://input"), true);
         if ($data) {
             ajouterClient($data);
         } else {
@@ -33,7 +39,7 @@ switch ($var) {
         }
         break;
     case 'PUT':
-        $data = json_decode(file_get_contents('php://input'), true);
+        $data = json_decode(file_get_contents("php://input"), true);
         if ($data && isset($_GET["id"]) && ($_GET["id"] != null)) {
             $id = $_GET["id"];
             modifierClient($id, $data);

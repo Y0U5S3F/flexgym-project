@@ -1,9 +1,9 @@
 <?php
 
-function chargerTousClient() {
+function chargerTousAbonnement() {
     try {
         global $connect;
-        $req = "SELECT * FROM client";
+        $req = "SELECT * FROM abonnement";
         $stmt = $connect->prepare($req);
         $stmt->execute();
     
@@ -17,13 +17,13 @@ function chargerTousClient() {
     }
 }
 
-function chargerClient($clientId) {
+function chargerAbonnement($abonnementId) {
     try {
         global $connect;
 
-        $request = "SELECT * FROM client WHERE clientId=:y";
+        $request = "SELECT * FROM client WHERE abonnementId=:y";
         $stmt = $connect->prepare($request);
-        $stmt->bindParam(":y", $clientId);
+        $stmt->bindParam(":y", $abonnementId);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         
