@@ -13,6 +13,9 @@ export class OffreService {
 
   private apiUrlOffre = 'http://localhost/api/offre.php';
   private apiUrlCour = 'http://localhost/api/cour.php';
+  private apiUrlPersonnel = 'http://localhost/api/personnel.php';
+  private apiUrlClient = 'http://localhost/api/client.php';
+
 
 
   constructor(private http: HttpClient) { }

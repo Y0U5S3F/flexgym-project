@@ -37,11 +37,11 @@ export class AddOffreComponent implements OnInit {
   }
 
   postOffre(){
-    this.offreObject.offreNom=this.formValue.value.offreNom;
-    this.offreObject.offrePrix=this.formValue.value.offrePrix;
-    this.offreObject.offreDetail=this.formValue.value.offreDetail;
-    this.offreObject.offreCour=this.formValue.value.offreCour;
-
+    this.offreObject.offreNom = this.formValue.value.offreNom;
+    this.offreObject.offrePrix = this.formValue.value.offrePrix;
+    this.offreObject.offreDetail = this.formValue.value.offreDetail;
+    this.offreObject.offreCour = this.formValue.value.offreCour;
+  
     this.api.createOffre(this.offreObject)
       .subscribe(res=>{
         console.log(res);
@@ -50,6 +50,7 @@ export class AddOffreComponent implements OnInit {
         this.formValue.reset();
       },
       err=>{
+        console.error(err);
         alert(err.message)
       })
   }

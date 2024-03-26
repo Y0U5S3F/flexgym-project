@@ -7,7 +7,7 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <button type="button" class="btn-close btn-close-white btn-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white btn-custom" data-bs-dismiss="modal" id="cancel" aria-label="Close"></button>
         <h1 class="modal-title " id="exampleModalLabel">Add Offre</h1>
         <div class="modal-body">
           <form [formGroup]="formValue">
@@ -48,7 +48,7 @@
                 </select>
             </div>
             <div class="d-grid" >
-                <button type="submit" class="btn modal-button" >Save</button>
+                <button type="submit" class="btn modal-button" (click)="postOffre()">Save</button>
             </div>
           </form>
         </div>
