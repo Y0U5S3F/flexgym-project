@@ -21,6 +21,11 @@ label {
     margin-top: 94px;
 
 }
+.form-control:focus {border-color:rgba(100,100,100,1)!important;
+    -webkit-box-shadow: none!important;
+        -moz-box-shadow: none!important;
+        box-shadow: none!important;
+    }
 
 
 /* .form-container {
