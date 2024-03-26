@@ -14,10 +14,12 @@ export class TableOffreComponent implements OnInit{
   offreData !: any;
   formValue !: FormGroup;
   offreObject:Offre = new Offre();
+  selectOptions: Offre[] = [];
   constructor(private api : OffreService, private formbuilder: FormBuilder) {
   }
   ngOnInit(): void {
       this.getAllOffre();
+      this.getSelectOptions();
       this.formValue = this.formbuilder.group({
         offreId: [''],
         offreNom: [''],
@@ -26,11 +28,25 @@ export class TableOffreComponent implements OnInit{
         offreCour: ['']
       })
   }
-  getAllOffre(){
-    this.api.getOffres()
-    .subscribe(res=>{
-      this.offreData = res;
-    })
+  getAllOffre() {
+    this.api.getOffres().subscribe(
+      (res: any) => {
+        this.offreData = res;
+      },
+      (error: any) => {
+        console.error('Error fetching data for table:', error);
+      }
+    );
+  }
+  getSelectOptions() {
+    this.api.getOffres().subscribe(
+      (res: any) => {
+        this.selectOptions = res;
+      },
+      (error: any) => {
+        console.error('Error fetching data for select:', error);
+      }
+    );
   }
   deleteOffres(row:any){
     this.api.deleteOffre(row.offreId).subscribe(() => {
