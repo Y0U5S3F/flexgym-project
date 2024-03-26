@@ -4,19 +4,26 @@ function supprimerCour($courId) {
     try {
         global $connect;
 
+        $connect->exec("SET FOREIGN_KEY_CHECKS=0;");
+
         $req = "DELETE from cour where courId=:y";
         $stmt = $connect->prepare($req);
         $stmt->bindParam(":y", $courId);
-        $resultat = $stmt->execute();
-        echo $stmt->rowCount();
+        $stmt->execute();
 
-        if($resultat == 0) {
+        $connect->exec("SET FOREIGN_KEY_CHECKS=1;");
+
+        if($stmt->rowCount() == 0) {
             http_response_code(400);
             $msg = ["erreur" => "cour non existant"];
             echo json_encode($msg);
+        } else {
+            echo json_encode(['success' => 'cour supprime']);
         }
     } catch (PDOException $e) {
-        die("Error: " . $e->getMessage());
+        $connect->exec("SET FOREIGN_KEY_CHECKS=1;");
+        http_response_code(500);
+        echo json_encode(["erreur" => $e->getMessage()]);
     }
 }
 ?>

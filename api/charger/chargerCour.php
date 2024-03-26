@@ -1,5 +1,4 @@
 <?php
-
 function chargerTousCour() {
     try {
         global $connect;
@@ -17,13 +16,13 @@ function chargerTousCour() {
     }
 }
 
-function chargerCour($CourId) {
+function chargerCour($courId) {
     try {
         global $connect;
 
-        $request = "SELECT * FROM cour WHERE CourId=:y";
+        $request = "SELECT * FROM cour WHERE courId=:y";
         $stmt = $connect->prepare($request);
-        $stmt->bindParam(":y", $CourId);
+        $stmt->bindParam(":y", $courId);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         

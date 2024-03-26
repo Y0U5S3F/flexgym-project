@@ -15,7 +15,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let row of offreData">
-      <td>{{row.id}}</td>
+      <td>{{row.offreId}}</td>
       <td>{{row.offreNom}}</td>
       <td>{{row.offreDetail}}</td>
       <td>{{row.offreCour}}</td>
@@ -71,7 +71,9 @@
       </svg>
     </span>
     <select formControlName="offreCour" class="form-select">
-      <option *ngFor="let option of selectOptions" [value]="option.offreId">{{ option.offreNom }}</option>
+      <option *ngFor="let option of selectOptions" [value]="option.value">
+        {{option.label}}
+      </option>
     </select>
   </div>
   <div class="d-grid" >

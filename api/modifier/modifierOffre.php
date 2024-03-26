@@ -13,16 +13,16 @@ function modifierOffre($offreId, $data){
         $stmt->bindParam(":offreDetail", $data["offreDetail"]);
         $stmt->bindParam(":offrePrix", $data["offrePrix"]);
         $stmt->bindParam(":offreCour", $data["offreCour"]);
+
         $stmt->execute();
 
         $connect->exec("SET FOREIGN_KEY_CHECKS=1;");
 
         if($stmt->rowCount() == 0) {
             http_response_code(400);
-            $msg = ["erreur" => "Offre non existant"];
-            echo json_encode($msg);
+            echo json_encode(['erreur' => 'Offre non modifie']);
         } else {
-            echo json_encode(['success' => 'Offre modifié']);
+            echo json_encode(['success' => 'Offre modifie']);
         }
 
     } catch (PDOException $e) {

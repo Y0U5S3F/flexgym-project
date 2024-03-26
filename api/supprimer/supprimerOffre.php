@@ -18,7 +18,7 @@ function supprimerOffre($offreId) {
             $msg = ["erreur" => "offre non existant"];
             echo json_encode($msg);
         } else {
-            echo json_encode(['success' => 'Offre deleted successfully']);
+            echo json_encode(['success' => 'Offre supprime']);
         }
     } catch (PDOException $e) {
         $connect->exec("SET FOREIGN_KEY_CHECKS=1;");

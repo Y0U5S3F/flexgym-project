@@ -1,122 +1,79 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { OffreService } from '../../services/offre-service.service';
 import { Offre } from '../../Offre';
-import {FormBuilder,FormGroup} from '@angular/forms'
-
-
 
 @Component({
   selector: 'app-table-offre',
   templateUrl: './table-offre.component.html',
   styleUrls: ['./table-offre.component.css']
 })
-export class TableOffreComponent implements OnInit{
-  offreData !: any;
-  formValue !: FormGroup;
-  offreObject:Offre = new Offre();
-  selectOptions: Offre[] = [];
-  constructor(private api : OffreService, private formbuilder: FormBuilder) {
-  }
+export class TableOffreComponent implements OnInit {
+  offreData: any;
+  formValue: FormGroup = new FormGroup({});
+  offreObject: Offre = new Offre();
+  selectOptions: { value: string, label: string }[] = [];
+
+  constructor(private api: OffreService, private formbuilder: FormBuilder) { }
+
   ngOnInit(): void {
-      this.getAllOffre();
-      this.getSelectOptions();
-      this.formValue = this.formbuilder.group({
-        offreId: [''],
-        offreNom: [''],
-        offreDetail: [''],
-        offrePrix: [''],
-        offreCour: ['']
-      })
+    this.formValue = this.formbuilder.group({
+      offreId: [''],
+      offreNom: [''],
+      offreDetail: [''],
+      offrePrix: [''],
+      offreCour: ['']
+    });
+
+    this.getAllOffre();
+    this.getCours();
   }
+
   getAllOffre() {
     this.api.getOffres().subscribe(
-      (res: any) => {
-        this.offreData = res;
-      },
-      (error: any) => {
-        console.error('Error fetching data for table:', error);
-      }
+      res => this.offreData = res,
+      error => console.error('Error fetching data for table:', error)
     );
   }
-  getSelectOptions() {
-    this.api.getOffres().subscribe(
-      (res: any) => {
-        this.selectOptions = res;
+
+  getCours() {
+    this.api.getCours().subscribe(
+      data => {
+        this.selectOptions = data.map((cour: any) => {
+          return { value: cour.courId, label: cour.courNom };
+        });
       },
-      (error: any) => {
-        console.error('Error fetching data for select:', error);
-      }
+      error => console.error('Error fetching data:', error)
     );
   }
-  deleteOffres(row:any){
+
+  deleteOffres(row: any) {
     this.api.deleteOffre(row.offreId).subscribe(() => {
-      this.getAllOffre(); 
+      this.getAllOffre();
     });
   }
-  onEdit(row:any){
-    this.offreObject.offreId=row.offreId;
+
+  onEdit(row: any) {
+    this.offreObject.offreId = row.offreId;
     this.formValue.controls['offreNom'].setValue(row.offreNom);
     this.formValue.controls['offreDetail'].setValue(row.offreDetail);
     this.formValue.controls['offrePrix'].setValue(row.offrePrix);
     this.formValue.controls['offreCour'].setValue(row.offreCour);
   }
-  
 
-  updateOffre(){
-    this.offreObject.offreNom=this.formValue.value.offreNom;
-    this.offreObject.offrePrix=this.formValue.value.offrePrix;
-    this.offreObject.offreDetail=this.formValue.value.offreDetail;
-    this.offreObject.offreCour=this.formValue.value.offreCour; // Add this line
-    this.api.updateOffre(this.offreObject,this.offreObject.offreId)
-    .subscribe(res=>{
-      alert("updated offre");
-      let ref = document.getElementById("cancel");
-      ref?.click();
-      this.formValue.reset();
-    })
+  updateOffre() {
+    this.offreObject.offreNom = this.formValue.value.offreNom;
+    this.offreObject.offrePrix = this.formValue.value.offrePrix;
+    this.offreObject.offreDetail = this.formValue.value.offreDetail;
+    this.offreObject.offreCour = this.formValue.value.offreCour;
+
+    this.api.updateOffre(this.offreObject, this.offreObject.offreId)
+      .subscribe(res => {
+        alert("updated offre");
+        let ref = document.getElementById("cancel");
+        ref?.click();
+        this.formValue.reset();
+        this.getAllOffre();
+      });
   }
-
 }
-
-// import { Component } from '@angular/core';
-// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-// @Component({
-//   selector: 'app-table-offre',
-//   templateUrl: './table-offre.component.html',
-//   styleUrls: ['./table-offre.component.css']
-// })
-// export class TableOffreComponent {
-//   offresForm: FormGroup;
-//   offres = [
-//     { offreID: 1, offreNom: 'Judo', detailOffre: 'Sport Combat', prixOffre: 50, editable: false },
-//     { offreID: 2, offreNom: 'Karate', detailOffre: 'Art Martial', prixOffre: 60, editable: false },
-//     { offreID: 3, offreNom: 'Muay Thai', detailOffre: 'Art Martial', prixOffre: 70, editable: false }
-//   ];
-
-//   constructor(private formBuilder: FormBuilder) {
-//     this.offresForm = this.formBuilder.group({
-//       offreNom: ['', Validators.required],
-//       detailOffre: ['', Validators.required],
-//       prixOffre: ['', Validators.required]
-//     });
-//   }
-
-//   modifierOffre(offre: any) {
-//     offre.editable = true;
-//     this.offresForm.patchValue({
-//       offreNom: offre.offreNom,
-//       detailOffre: offre.detailOffre,
-//       prixOffre: offre.prixOffre
-//     });
-//   }
-
-//   validerModification(offre: any) {
-//     offre.offreNom = this.offresForm.value.offreNom;
-//     offre.detailOffre = this.offresForm.value.detailOffre;
-//     offre.prixOffre = this.offresForm.value.prixOffre;
-//     offre.editable = false;
-//     // Now you can send your form data wherever you want
-//     console.log("Form data:", this.offresForm.value);
-//   }
-// }
