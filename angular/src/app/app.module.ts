@@ -23,6 +23,8 @@ import { HeaderHomeComponent } from './components/header-home/header-home.compon
 import { HeroComponent } from './pages/home/component/hero/hero.component';
 import { FeaturesComponent } from './pages/home/component/features/features.component';
 import { InfoComponent } from './pages/home/component/info/info.component';
+import { CalendarClientComponent } from './pages/calendar-client/calendar-client.component';
+import { TableCalendarComponent } from './components/table-calendar/table-calendar.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { InfoComponent } from './pages/home/component/info/info.component';
     HeaderHomeComponent,
     HeroComponent,
     FeaturesComponent,
-    InfoComponent
+    InfoComponent,
+    CalendarClientComponent,
+    TableCalendarComponent
   ],
   imports: [
     BrowserModule,
