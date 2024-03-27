@@ -29,9 +29,6 @@ export class LoginComponent {
 LoginRes() {
   this.loginObject.email = this.formValue.get('email')?.value;
   this.loginObject.pass = this.formValue.get('pass')?.value;
-  
-  this.loginObject.email = this.formValue.value.emailInput;
-  this.loginObject.pass = this.formValue.value.passInput;
   this.loginObject.userType = this.formValue.value.userType;
 
   this.api.LoginRes(this.loginObject).subscribe(
