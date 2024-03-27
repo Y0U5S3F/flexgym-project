@@ -1,47 +1,48 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
-import { Login } from '../../Login'
+import { Login } from '../../Login';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent {  
-  loginData: any;
-  formValue: FormGroup = new FormGroup({});
+export class LoginComponent implements OnInit {
+  formValue!: FormGroup;
   loginObject: Login = new Login();
-  selectOptions: { value: string, label: string }[] = [];
 
-  constructor(private api: LoginService, private formbuilder: FormBuilder, private router: Router) { }
+  constructor(private api: LoginService, private formbuilder: FormBuilder, private router: Router) { 
+    console.log("LoginComponent constructor called");
+  }
 
   ngOnInit(): void {
+    console.log("LoginComponent ngOnInit called");
     this.formValue = this.formbuilder.group({
       email: [''],
-      pass: [''],
-      userType: ['']
+      pass: ['']
     });
   }
 
-LoginRes() {
-  this.loginObject.email = this.formValue.get('email')?.value;
-  this.loginObject.pass = this.formValue.get('pass')?.value;
-  this.loginObject.userType = this.formValue.value.userType;
+  LoginRes() {
+    console.log("LoginRes called");
+    this.loginObject.email = this.formValue.get('email')?.value;
+    this.loginObject.pass = this.formValue.get('pass')?.value;
 
-  this.api.LoginRes(this.loginObject).subscribe(
-    res => {
-      this.loginData = res;
-      console.log(this.loginData.userType); // Check the returned userType
-      if (this.loginData.userType === 'X12nDlxf') {
-        this.router.navigate(['/offreAdmin']); // Use navigate method with array argument
+    this.api.LoginRes(this.loginObject).subscribe(
+      (res: any) => {
+        console.log("Login response received:", res);
+        if (res.userType === 'X12nDlxf') {
+          console.log('Redirecting to offreAdmin');
+          this.router.navigate(['/offreAdmin']);
+        }else{
+          alert("email ou pass incorrect")
+        }
+      },
+      err => {
+        console.error('Error:', err);
       }
-    },
-    err => {
-      console.error(err); // Check for any errors
-    }
-  )
-}
+    );
+  }
 }

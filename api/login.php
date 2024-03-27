@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json');
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -22,15 +23,15 @@ FROM `admin` WHERE adminEmail = :email AND adminPass = :pass
 $stmt->bindParam(":email", $email);
 $stmt->bindParam(":pass", $pass);
 $stmt->execute();
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$result = $stmt->fetch(PDO::FETCH_ASSOC); 
 
 if($result)
 {
-echo json_encode($result);
+    echo json_encode($result);
 }
 else
 {
-http_response_code(404);
+    http_response_code(404);
 }
 }
 ?>
