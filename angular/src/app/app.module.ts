@@ -17,6 +17,17 @@ import { AddOffreComponent } from './components/add-offre/add-offre.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CalendarClientComponent } from './pages/calendar-client/calendar-client.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { OffreAdminComponent } from './pages/offre-admin/offre-admin.component';
+import { ReclamComponent } from './pages/reclam/reclam.component';
+import { HeroComponent } from './pages/home/component/hero/hero.component';
+import { InfoComponent } from './pages/home/component/info/info.component';
+import { FeaturesComponent } from './pages/home/component/features/features.component';
+import { FormComponent } from './pages/reclam/component/form/form.component';
+import { HeaderHomeComponent } from './components/header-home/header-home.component';
+import { TableCalendarComponent } from './components/table-calendar/table-calendar.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +40,18 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     HeaderComponent,
     TableOffreComponent,
-    AddOffreComponent
+    AddOffreComponent,
+    CalendarClientComponent,
+    HomeComponent,
+    LoginComponent,
+    OffreAdminComponent,
+    ReclamComponent,
+    HeroComponent,
+    InfoComponent,
+    FeaturesComponent,
+    FormComponent,
+    HeaderHomeComponent,
+    TableCalendarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,30 +1,28 @@
 <?php
-include_once("connect.php");
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+include ("connect.php");
 $data = json_decode(file_get_contents('php://input'), true);
 if(isset($data) && !empty($data))
 {
-$pass = trim($data['pass']);
 $email = trim($data['email']);
+$pass = trim($data['pass']);
 
-$stmt = $mysqli->prepare("SELECT clientEmail AS email, clientPass AS pass
+$stmt = $connect->prepare("SELECT clientEmail AS email, clientPass AS pass
 FROM client WHERE clientEmail = :email AND clientPass = :pass UNION
 SELECT personnelEmail AS email, personnelPass AS pass
 FROM personnel WHERE personnelEmail = :email AND personnelPass = :pass UNION
 SELECT adminEmail AS email, adminPass AS pass
-FROM admin WHERE adminEmail = :email AND adminPass = :pass");
-$stmt->bind_param(":email", $email);
-$stmt->bind_param(":pass", $pass);
+FROM `admin` WHERE adminEmail = :email AND adminPass = :pass");
+$stmt->bindParam(":email", $email);
+$stmt->bindParam(":pass", $pass);
 $stmt->execute();
-$result = $stmt->get_result();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if($result)
 {
-$rows = array();
-while($row = $result->fetch_assoc())
-{
-$rows[] = $row;
-}
-echo json_encode($rows);
+echo json_encode($result);
 }
 else
 {

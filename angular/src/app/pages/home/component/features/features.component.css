@@ -1,0 +1,35 @@
+.text-box{
+    position: relative;
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 100px;
+}
+
+.text-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.feature-title{
+    color:#D6F526;
+    font-size: 36px;
+    font-weight: 500;
+}
+.feature-text{
+    color:white;
+    font-size: 18px;
+    font-weight: 500;
+}
+.card{
+    background-color: #0F1114;
+    border: 0.7px solid #656666;
+}
+.card-title{
+    color:#D6F526;
+    font-size:24px;
+    font-weight: 500;
+}
+.card-text{
+    color:white;
+}

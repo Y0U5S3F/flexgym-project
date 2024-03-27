@@ -1,0 +1,36 @@
+.hero-title{
+    color:white;
+    font-size: 64px;
+    font-weight: 600;
+    margin-bottom:20px;
+
+}
+.span-green{
+    color:#D6F525;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    margin-top: 100px;
+}
+.box-hero{
+    margin-top: 170px;
+    margin-left: 60px;
+}
+.hero-text{
+    font-size: 16px;
+    color:white;
+    font-weight: 500;
+    line-height: 1.7;
+    
+}
+.button-hero{
+   margin-top:20px;
+   margin-bottom:150px;
+}
+.img-css{
+    border-radius: 10px;
+}
+.container{
+    margin-top:30px;
+}
