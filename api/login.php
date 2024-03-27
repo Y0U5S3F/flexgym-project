@@ -9,12 +9,16 @@ if(isset($data) && !empty($data))
 $email = trim($data['email']);
 $pass = trim($data['pass']);
 
-$stmt = $connect->prepare("SELECT clientEmail AS email, clientPass AS pass
-FROM client WHERE clientEmail = :email AND clientPass = :pass UNION
-SELECT personnelEmail AS email, personnelPass AS pass
-FROM personnel WHERE personnelEmail = :email AND personnelPass = :pass UNION
-SELECT adminEmail AS email, adminPass AS pass
-FROM `admin` WHERE adminEmail = :email AND adminPass = :pass");
+$stmt = $connect->prepare(
+"SELECT clientEmail AS email, clientPass AS pass, '0rxQHAxT' AS userType
+FROM client WHERE clientEmail = :email AND clientPass = :pass
+UNION
+SELECT personnelEmail AS email, personnelPass AS pass, 'X12nDlxf' AS userType
+FROM personnel WHERE personnelEmail = :email AND personnelPass = :pass
+UNION
+SELECT adminEmail AS email, adminPass AS pass, 'Mv1NpnIV' AS userType
+FROM `admin` WHERE adminEmail = :email AND adminPass = :pass
+");
 $stmt->bindParam(":email", $email);
 $stmt->bindParam(":pass", $pass);
 $stmt->execute();
