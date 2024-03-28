@@ -50,7 +50,6 @@ export class AddOffreComponent implements OnInit {
         this.formValue.reset();
       },
       err=>{
-        console.error(err);
         alert(err.message)
       })
   }

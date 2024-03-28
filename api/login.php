@@ -15,7 +15,7 @@ $stmt = $connect->prepare(
 FROM client WHERE clientEmail = :email AND clientPass = :pass
 UNION
 SELECT personnelEmail AS email, personnelPass AS pass, 'X12nDlxf' AS userType
-FROM personnel WHERE personnelEmail = :email AND personnelPass = :pass
+FROM personnel WHERE personnelEmail = :email AND personnelPass = :pass AND personnelRole='Receptioniste'
 UNION
 SELECT adminEmail AS email, adminPass AS pass, 'Mv1NpnIV' AS userType
 FROM `admin` WHERE adminEmail = :email AND adminPass = :pass
