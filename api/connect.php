@@ -3,7 +3,7 @@
 $host = 'localhost';
 $db   = 'flexgym';
 $user = 'root';
-$pass = '';
+$pass = 'root';
 $charset = 'utf8mb4';
 
 try{
