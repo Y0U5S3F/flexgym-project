@@ -1,22 +1,28 @@
 <?php
-
-function supprimerPersonnel($abonnementId) {
+function supprimerAbonnement($abonnementId) {
     try {
         global $connect;
 
-        $req = "DELETE from client where abonnementId=:y";
+        $connect->exec("SET FOREIGN_KEY_CHECKS=0;");
+
+        $req = "DELETE from abonnement where abonnementId=:y";
         $stmt = $connect->prepare($req);
         $stmt->bindParam(":y", $abonnementId);
-        $resultat = $stmt->execute();
-        echo $stmt->rowCount();
+        $stmt->execute();
 
-        if($resultat == 0) {
+        $connect->exec("SET FOREIGN_KEY_CHECKS=1;");
+
+        if($stmt->rowCount() == 0) {
             http_response_code(400);
-            $msg = ["erreur" => "client non existant"];
+            $msg = ["erreur" => "abonnement non existant"];
             echo json_encode($msg);
+        } else {
+            echo json_encode(['success' => 'Abonnement supprime']);
         }
     } catch (PDOException $e) {
-        die("Error: " . $e->getMessage());
+        $connect->exec("SET FOREIGN_KEY_CHECKS=1;");
+        http_response_code(500);
+        echo json_encode(["erreur" => $e->getMessage()]);
     }
 }
 ?>

@@ -1,5 +1,5 @@
 <?php
-function chargerTousActivite() {
+function chargerTousCalendrier() {
     try {
         global $connect;
         $req = "SELECT * FROM calendrier";
@@ -16,7 +16,7 @@ function chargerTousActivite() {
     }
 }
 
-function chargerActivite($activiteId) {
+function chargerCalendrier($activiteId) {
     try {
         global $connect;
 
