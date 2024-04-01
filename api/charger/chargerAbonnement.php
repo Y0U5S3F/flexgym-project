@@ -1,5 +1,4 @@
 <?php
-
 function chargerTousAbonnement() {
     try {
         global $connect;
@@ -21,7 +20,7 @@ function chargerAbonnement($abonnementId) {
     try {
         global $connect;
 
-        $request = "SELECT * FROM client WHERE abonnementId=:y";
+        $request = "SELECT * FROM abonnement WHERE abonnementId=:y";
         $stmt = $connect->prepare($request);
         $stmt->bindParam(":y", $abonnementId);
         $stmt->execute();
@@ -29,7 +28,7 @@ function chargerAbonnement($abonnementId) {
         
         if($result == null) {
             http_response_code(204);
-            $msg = ["Error: " => "client inexistant"];
+            $msg = ["Error: " => "Abonnement inexistant"];
             echo json_encode($msg);
         } else {
             echo json_encode($result);

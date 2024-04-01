@@ -28,7 +28,7 @@ function chargerCour($courId) {
         
         if($result == null) {
             http_response_code(204);
-            $msg = ["Error: " => "cour inexistant"];
+            $msg = ["Error: " => "Cour inexistant"];
             echo json_encode($msg);
         } else {
             echo json_encode($result);

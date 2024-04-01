@@ -19,4 +19,5 @@ function supprimerPersonnel($personnelId) {
         die("Error: " . $e->getMessage());
     }
 }
+
 ?>

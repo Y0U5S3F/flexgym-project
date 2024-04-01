@@ -1,22 +1,29 @@
 <?php 
 
-function ajouterClient($data){
+function ajouterPersonnel($data){
     try {
         global $connect;
 
-        $req = "INSERT INTO client(nom,prenom,email,pass,tel,datenais) Values(:nom,:prenom,:email,:pass,:tel,:datenais)";
+        $req = "INSERT INTO personnel(personnelRole,personnelNom,personnelPrenom,personnelEmail,personnelPass) Values(:personnelRole,:personnelNom,:personnelPrenom,:personnelEmail,:personnelPass)";
         $stmt = $connect->prepare($req);
-        $stmt->bindParam(":nom", $data["nom"]);
-        $stmt->bindParam(":prenom", $data["prenom"]);
-        $stmt->bindParam(":email", $data["email"]);
-        $stmt->bindParam(":pass", $data["pass"]);
-        $stmt->bindParam(":tel", $data["tel"]);
-        $stmt->bindParam(":datenais", $data["datenais"]);
+        $stmt->bindParam(":personnelRole", $data["personnelRole"]);
+        $stmt->bindParam(":personnelNom", $data["personnelNom"]);
+        $stmt->bindParam(":personnelPrenom", $data["personnelPrenom"]);
+        $stmt->bindParam(":personnelEmail", $data["personnelEmail"]);
+        $stmt->bindParam(":personnelPass", $data["personnelPass"]);
         $stmt->execute();
-        echo $stmt->rowCount();
-        } catch (PDOException $e) {
-            die("Error: " . $e->getMessage());
+
+        if($stmt->rowCount() == 0) {
+            http_response_code(400);
+            $msg = ["erreur" => "Personnel non Crée"];
+            echo json_encode($msg);
+        } else {
+            echo json_encode(['success' => 'Personnel Crée']);
         }
+
+    } catch (PDOException $e) {
+        die("Error: " . $e->getMessage());
     }
+}
 
 ?>

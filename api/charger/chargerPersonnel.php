@@ -1,9 +1,8 @@
 <?php
-
 function chargerTousPersonnel() {
     try {
         global $connect;
-        $req = "SELECT * FROM client";
+        $req = "SELECT * FROM personnel";
         $stmt = $connect->prepare($req);
         $stmt->execute();
     
@@ -21,7 +20,7 @@ function chargerPersonnel($personnelId) {
     try {
         global $connect;
 
-        $request = "SELECT * FROM client WHERE personnelId=:y";
+        $request = "SELECT * FROM personnel WHERE personnelId=:y";
         $stmt = $connect->prepare($request);
         $stmt->bindParam(":y", $personnelId);
         $stmt->execute();
@@ -29,7 +28,7 @@ function chargerPersonnel($personnelId) {
         
         if($result == null) {
             http_response_code(204);
-            $msg = ["Error: " => "client inexistant"];
+            $msg = ["Error: " => "Personnel inexistant"];
             echo json_encode($msg);
         } else {
             echo json_encode($result);

@@ -1,8 +1,8 @@
 <?php
-function chargerTousOffre() {
+function chargerTousActivite() {
     try {
         global $connect;
-        $req = "SELECT * FROM offre";
+        $req = "SELECT * FROM calendrier";
         $stmt = $connect->prepare($req);
         $stmt->execute();
     
@@ -16,19 +16,19 @@ function chargerTousOffre() {
     }
 }
 
-function chargerOffre($offreId) {
+function chargerActivite($activiteId) {
     try {
         global $connect;
 
-        $request = "SELECT * FROM offre WHERE offreId=:y";
+        $request = "SELECT * FROM calendrier WHERE activiteId=:y";
         $stmt = $connect->prepare($request);
-        $stmt->bindParam(":y", $offreId);
+        $stmt->bindParam(":y", $activiteId);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if($result == null) {
             http_response_code(204);
-            $msg = ["Error: " => "Offre inexistant"];
+            $msg = ["Error: " => "Activite inexistant"];
             echo json_encode($msg);
         } else {
             echo json_encode($result);
