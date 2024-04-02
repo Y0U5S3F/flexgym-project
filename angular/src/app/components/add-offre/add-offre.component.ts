@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder,FormGroup} from '@angular/forms'
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { OffreService } from '../../services/offre-service.service';
-import { Offre } from './../../Offre';
-import { Cour } from './../../Cour';
+import { Offre } from '../../Offre';
+import { CourService } from '../../services/cour-service.service';
+import { Cour } from '../../Cour';
 
 @Component({
   selector: 'app-add-offre',
@@ -14,7 +15,7 @@ export class AddOffreComponent implements OnInit {
   offreObject:Offre = new Offre();
   selectOptions: any[] = [];
 
-  constructor(private formbuilder: FormBuilder, private api : OffreService ){}
+  constructor(private formbuilder: FormBuilder, private apiOffre : OffreService , private apiCour : CourService){}
 
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
@@ -24,7 +25,7 @@ export class AddOffreComponent implements OnInit {
       offreCour : ['']
     })
 
-    this.api.getCours().subscribe(
+    this.apiCour.getCours().subscribe(
       (data: any) => {
         this.selectOptions = data.map((cour: any) => {
           return { value: cour.courId, label: cour.courNom };
@@ -42,7 +43,7 @@ export class AddOffreComponent implements OnInit {
     this.offreObject.offreDetail = this.formValue.value.offreDetail;
     this.offreObject.offreCour = this.formValue.value.offreCour;
   
-    this.api.createOffre(this.offreObject)
+    this.apiOffre.createOffre(this.offreObject)
       .subscribe(res=>{
         console.log(res);
         let ref = document.getElementById("cancel");

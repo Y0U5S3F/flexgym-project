@@ -1,0 +1,11 @@
+<div class="row cards">
+    <div class="col-md-4" *ngFor="let offre of offres">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4 class="card-title mt-4">{{offre.offreNom}}</h4>
+          <p class="card-price">${{offre.offrePrix}}<span class="month">/Month</span></p>
+          <p class="card-text description mb-4" >{{offre.offreDetail}}</p>
+        </div>
+      </div>
+    </div>
+  </div>

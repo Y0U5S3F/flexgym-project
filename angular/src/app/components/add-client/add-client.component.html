@@ -1,0 +1,69 @@
+<!-- Button trigger modal -->
+<app-button text="Ajouter" color="#E7FE58" textColor="#000" data-bs-toggle="modal" data-bs-target="#exampleModal"></app-button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <button type="button" id="cancel" class="btn-close btn-close-white btn-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+      <h1 class="modal-title" id="exampleModalLabel">Add Client</h1>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="input-group">
+            <span class="input-group-text">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+              </svg>
+            </span>
+            <input type="text" formControlName="clientNom" class="form-control" placeholder="Nom" required>
+          </div>
+          <div class="input-group">
+            <span class="input-group-text">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+              </svg>
+            </span>
+            <input type="text" formControlName="clientPrenom" class="form-control" placeholder="Prénom" required>
+          </div>
+          <div class="input-group">
+            <span class="input-group-text">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                <path d="M0 4.804c0-.217.183-.396.409-.396H15.59c.226 0 .41.179.41.396v6.392a.407.407 0 0 1-.41.396H.409A.407.407 0 0 1 0 11.196V4.804z"/>
+                <path fill-rule="evenodd" d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5H1.5A1.5 1.5 0 0 1 0 12.5v-9zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5H1.5z"/>
+              </svg>
+            </span>
+            <input type="email" formControlName="clientEmail" class="form-control" placeholder="Email" required>
+          </div>
+          <div class="input-group">
+            <span class="input-group-text">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+                <path d="M0 5v8a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3H3a3 3 0 0 0-3 3zm4-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1H4V4zm-.5 5a1.5 1.5 0 0 1 3 0v2a1.5 1.5 0 0 1-3 0v-2z"/>
+              </svg>
+            </span>
+            <input type="password" formControlName="clientPass" class="form-control" placeholder="Password" required>
+          </div>
+          <div class="input-group">
+            <span class="input-group-text">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                <path d="M7.5 0a1.5 1.5 0 0 1 1.5 1.5v3.455a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5V1.5A1.5 1.5 0 0 1 7.5 0zM5.646 2.854a.5.5 0 0 1 .708 0l1.06 1.06a6.5 6.5 0 0 1 3.314 3.314l1.06 1.06a.5.5 0 0 1 0 .708l-1.06 1.06a6.5 6.5 0 0 1-3.314 3.314l-1.06 1.06a.5.5 0 0 1-.708 0l-1.06-1.06a6.5 6.5 0 0 1-3.314-3.314L1.878 8.288a.5.5 0 0 1 0-.708l1.06-1.06a6.5 6.5 0 0 1 3.314-3.314zM8 4.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"/>
+              </svg>
+            </span>
+            <input type="text" formControlName="clientTel" class="form-control" placeholder="Télephone" pattern="[0-9]{8}"required>
+          </div>
+          <div class="input-group">
+            <span class="input-group-text">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm1 0v2h14V1H1zm0 3v11h14V4H1zm3-2v2h2V2H4zm4 0v2h2V2H8zm4 0v2h2V2h-2z"/>
+              </svg>
+            </span>
+            <input type="date" formControlName="clientDatenais" class="form-control" placeholder="Date de naissance" required>
+          </div>
+          
+          <div class="d-grid">
+            <button type="submit" class="btn modal-button" (click)="addClient()">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

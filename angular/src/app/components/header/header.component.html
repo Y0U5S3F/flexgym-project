@@ -1,24 +1,24 @@
-    <header class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-md-auto">
-                <a href="#" class="logo">Flex <span class="green-span">Gym</span></a>
-            </div>
-            <div class="col-md">
-                <nav class="text-center">
-                    <ul class="nav-links">
-                        <li><a href="#">Courses</a></li>
-                        <li><a href="#">Courses</a></li>
-                        <li><a href="#">Courses</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="col-md-auto">
-                <a class="sign-in" href="#">
-                    <!-- <app-button text="Name" color="#E7FE58" [icon]="'#person-fill'"></app-button> -->
-                    <app-button text="Sign Out" color="#FFFFFF" textColor="#000"></app-button>
-                    <app-button text="User" color="#E7FE58" textColor="#000"></app-button>
-                </a>
-            </div>
+<header class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-md-auto">
+            <a href="#" class="logo">Flex <span class="green-span">Gym</span></a>
         </div>
-    </header>
-   
+        <div class="col-md">
+            <nav class="text-center">
+                <ul class="nav-links">
+                    <li><a [routerLink]="['/offreAdmin']" routerLinkActive="active">Offres</a></li>
+                    <li><a [routerLink]="['/courAdmin']" routerLinkActive="active">Cours</a></li>
+                    <li><a [routerLink]="['']" routerLinkActive="active">Personnel</a></li>
+                    <li><a [routerLink]="['']" routerLinkActive="active">Calendrier</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-auto">
+            <a class="sign-in" href="#">
+                <!-- <app-button text="Name" color="#E7FE58" [icon]="'#person-fill'"></app-button> -->
+                <app-button text="Sign Out" color="#FFFFFF" textColor="#000"></app-button>
+                <app-button text="User" color="#E7FE58" textColor="#000"></app-button>
+            </a>
+        </div>
+    </div>
+</header>

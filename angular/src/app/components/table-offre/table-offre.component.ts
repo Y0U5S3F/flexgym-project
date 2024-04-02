@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { OffreService } from '../../services/offre-service.service';
 import { Offre } from '../../Offre';
+import { CourService } from '../../services/cour-service.service';
+import { Cour } from '../../Cour';
+
 
 @Component({
   selector: 'app-table-offre',
@@ -14,7 +17,7 @@ export class TableOffreComponent implements OnInit {
   offreObject: Offre = new Offre();
   selectOptions: { value: string, label: string }[] = [];
 
-  constructor(private api: OffreService, private formbuilder: FormBuilder) { }
+  constructor(private apiOffre: OffreService,private apiCour: CourService, private formbuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
@@ -30,14 +33,14 @@ export class TableOffreComponent implements OnInit {
   }
 
   getAllOffre() {
-    this.api.getOffres().subscribe(
+    this.apiOffre.getOffres().subscribe(
       res => this.offreData = res,
       error => console.error('Error fetching data for table:', error)
     );
   }
 
   getCours() {
-    this.api.getCours().subscribe(
+    this.apiCour.getCours().subscribe(
       data => {
         this.selectOptions = data.map((cour: any) => {
           return { value: cour.courId, label: cour.courNom };
@@ -48,7 +51,7 @@ export class TableOffreComponent implements OnInit {
   }
 
   deleteOffres(row: any) {
-    this.api.deleteOffre(row.offreId).subscribe(() => {
+    this.apiOffre.deleteOffre(row.offreId).subscribe(() => {
       this.getAllOffre();
     });
   }
@@ -67,7 +70,7 @@ export class TableOffreComponent implements OnInit {
     this.offreObject.offreDetail = this.formValue.value.offreDetail;
     this.offreObject.offreCour = this.formValue.value.offreCour;
 
-    this.api.updateOffre(this.offreObject, this.offreObject.offreId)
+    this.apiOffre.updateOffre(this.offreObject, this.offreObject.offreId)
       .subscribe(res => {
         alert("updated offre");
         let ref = document.getElementById("cancel");

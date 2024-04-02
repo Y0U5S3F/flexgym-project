@@ -1,0 +1,41 @@
+
+.card{
+    background-color: #0F1114;
+    border: 0.7px solid #575858;
+    text-align: center;
+    margin: 0; /* Remove margin */
+}
+.cards{
+        display: flex;
+        margin-right: 120px;
+        margin-left: 120px;
+        margin-top:100px;
+}
+.card-title{
+    color:#fff;
+    font-size:24px;
+    font-weight: 600;
+    margin: 0; /* Remove margin */
+}
+.card-subtitle{
+    color:white;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0; /* Remove margin */
+}
+.card-price{
+    color:#D6F526;
+    font-size: 64px;
+    font-weight: 700;
+    margin: 0; /* Remove margin */
+}
+.card-text{
+    color:white;
+    margin: 0; /* Remove margin */
+}
+.month{
+    color:#D6F526;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0; /* Remove margin */
+}

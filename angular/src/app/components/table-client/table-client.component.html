@@ -1,0 +1,80 @@
+<div class="text-center table-title">
+    <h1>Liste des clients</h1>
+  </div>
+  
+  <div class="table-container">
+    <table class="striped-table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">Email</th>
+          <th scope="col">Mot de passe</th>
+          <th scope="col">Téléphone</th>
+          <th scope="col">Date de naissance</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of clientData">
+          <td>{{ row.clientId }}</td>
+          <td>{{ row.clientNom }}</td>
+          <td>{{ row.clientPrenom }}</td>
+          <td>{{ row.clientEmail }}</td>
+          <td>{{ row.clientPass }}</td>
+          <td>{{ row.clientTel }}</td>
+          <td>{{ row.clientDatenais }}</td>
+          <td>
+            <app-button (click)="onEdit(row)" text="Modifier" data-bs-toggle="modal" data-bs-target="#modifierModal" color="#000" textColor="#E7FE58"></app-button>
+            <app-button (click)="deleteClient(row)" text="Supprimer" color="#000" textColor="#DC3545"></app-button>
+          </td>
+        </tr>
+      </tbody> 
+    </table>
+  
+    <div class="button-container">
+      <app-add-client></app-add-client>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="modifierModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <button type="button" id="cancel" class="btn-close btn-close-white btn-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title" id="exampleModalLabel">Modifier un client</h1>
+        <div class="modal-body">
+          <form [formGroup]="formValue">
+            <div class="input-group">
+              <span class="input-group-text">Nom</span>
+              <input type="text" formControlName="clientNom" class="form-control" required>
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">Prénom</span>
+              <input type="text" formControlName="clientPrenom" class="form-control" required>
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">Email</span>
+              <input type="email" formControlName="clientEmail" class="form-control" required>
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">Mot de passe</span>
+              <input type="password" formControlName="clientPass" class="form-control" required>
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">Téléphone</span>
+              <input type="tel" formControlName="clientTel" class="form-control" required>
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">Date de naissance</span>
+              <input type="date" formControlName="clientDatenais" class="form-control" required>
+            </div>
+            <div class="d-grid">
+              <button type="submit" (click)="updateClient()" class="btn modal-button">Enregistrer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

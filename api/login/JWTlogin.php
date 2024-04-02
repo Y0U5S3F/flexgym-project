@@ -24,7 +24,13 @@ if(isset($_POST["login"])){
             SELECT adminEmail AS email, adminPass AS pass, 'Mv1NpnIV' AS userType
             FROM `admin` WHERE adminEmail = :email AND adminPass = :pass
             ");
+        $stmt->bindParam(":email", $_POST["email"]);
+        $stmt->bindParam(":pass", $_POST["pass"]);
         $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if($result){
+            
+        }
     }
 }
 ?>

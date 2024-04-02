@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ButtonComponent } from './components/button/button.component';
@@ -16,7 +16,6 @@ import { TableOffreComponent } from './components/table-offre/table-offre.compon
 import { AddOffreComponent } from './components/add-offre/add-offre.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { CalendarClientComponent } from './pages/calendar-client/calendar-client.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -28,6 +27,15 @@ import { FeaturesComponent } from './pages/home/component/features/features.comp
 import { FormComponent } from './pages/reclam/component/form/form.component';
 import { HeaderHomeComponent } from './components/header-home/header-home.component';
 import { TableCalendarComponent } from './components/table-calendar/table-calendar.component';
+import { AddClientComponent } from './components/add-client/add-client.component';
+import { AddCoursComponent } from './components/add-cours/add-cours.component';
+import { TableClientComponent } from './components/table-client/table-client.component';
+import { TableCoursComponent } from './components/table-cours/table-cours.component';
+import { ClientAdminComponent } from './pages/client-admin/client-admin.component';
+import { CoursAdminComponent } from './pages/cours-admin/cours-admin.component';
+import { OffresComponent } from './pages/offres/offres.component';
+import { CardsComponent } from './pages/offres/cards/cards.component';
+import { TextComponent } from './pages/offres/text/text.component';
 
 @NgModule({
   declarations: [
@@ -51,20 +59,27 @@ import { TableCalendarComponent } from './components/table-calendar/table-calend
     FeaturesComponent,
     FormComponent,
     HeaderHomeComponent,
-    TableCalendarComponent
+    TableCalendarComponent,
+    AddClientComponent,
+    AddCoursComponent,
+    TableClientComponent,
+    TableCoursComponent,
+    ClientAdminComponent,
+    CoursAdminComponent,
+    OffresComponent,
+    CardsComponent,
+    TextComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    HttpClientModule,
     AppRoutingModule,
     FontAwesomeModule,
     NgbModule,
     FormsModule,
-    HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [
-    provideClientHydration()
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

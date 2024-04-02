@@ -1,0 +1,23 @@
+.text-box{
+    position: relative;
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 50px;
+}
+
+.text-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.feature-title{
+    color:#D6F526;
+    font-size: 36px;
+    font-weight: 500;
+}
+.feature-text{
+    color:white;
+    font-size: 18px;
+    font-weight: 500;
+}
