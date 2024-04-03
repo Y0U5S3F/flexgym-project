@@ -1,0 +1,15 @@
+ <div class="card-container">
+    <div class="row cards">
+        <div class="col-md-4"  *ngFor="let cour of cours">
+          <div class="card mb-4">
+            <img class="card-img-top" src="../../../../assets/anastase-maragos-HyvE5SiKMUs-unsplash.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h3 class="card-title ">{{cour.courNom}}</h3>
+              <p class="card-subtitle">{{cour.courCoach}}</p>
+              <p class="card-text description " >{{cour.courDetail}}</p>
+            </div>
+          </div>
+        </div>
+      </div>     
+ </div>
+

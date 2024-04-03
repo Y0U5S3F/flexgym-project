@@ -1,0 +1,32 @@
+.card{
+    background-color: #0F1114;
+    border: 0.7px solid #656666;
+}
+.card-container{
+    margin-top: 100px;
+    margin-bottom: 50px;
+
+}
+.card-title{
+    color:#D6F526;
+    font-size:28px;
+    font-weight: 800;
+}
+.card-subtitle{
+    color:#fff;
+    font-size:18px;
+    font-weight: 800;
+    margin-bottom:15px;
+
+}
+.card-text{
+    color:white;
+    font-size:15px;
+    margin-bottom: 5px;
+}
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+    margin-bottom: 0;
+}

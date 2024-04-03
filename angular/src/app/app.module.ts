@@ -36,6 +36,9 @@ import { CoursAdminComponent } from './pages/cours-admin/cours-admin.component';
 import { OffresComponent } from './pages/offres/offres.component';
 import { CardsComponent } from './pages/offres/cards/cards.component';
 import { TextComponent } from './pages/offres/text/text.component';
+import { CoursComponent } from './pages/cours/cours.component';
+import { TexteComponent } from './pages/cours/texte/texte.component';
+import { CoursCardsComponent } from './pages/cours/cours-cards/cours-cards.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +71,10 @@ import { TextComponent } from './pages/offres/text/text.component';
     CoursAdminComponent,
     OffresComponent,
     CardsComponent,
-    TextComponent
+    TextComponent,
+    CoursComponent,
+    TexteComponent,
+    CoursCardsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -9,6 +9,7 @@ import { ReclamComponent } from './pages/reclam/reclam.component';
 import { CoursAdminComponent } from './pages/cours-admin/cours-admin.component';
 import { ClientAdminComponent } from './pages/client-admin/client-admin.component';
 import { OffresComponent } from './pages/offres/offres.component';
+import { CoursComponent } from './pages/cours/cours.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'offreAdmin',
     component: OffreAdminComponent
+  },
+  {
+    path: 'cours',
+    component: CoursComponent
   },
   {
     path: 'offre',
