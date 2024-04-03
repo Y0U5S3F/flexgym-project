@@ -1,0 +1,113 @@
+.padding {
+    padding: 3rem !important;
+}
+
+.user-card-full {
+    overflow: hidden;
+    background-color: #000;
+}
+.card-title{
+    margin-bottom: 10px;
+    font-weight: 600;
+    color:#E7FE58;
+    background-color: #1c1c1c;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;;
+
+}
+.card-info{
+    background-color: #1c1c1c;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;;
+    margin-bottom: 10px;
+}
+
+.card {
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.m-r-0 {
+    margin-right: 0px;
+}
+
+p, h6 {
+    color: white;
+}
+
+.user-card-full .user-profile {
+    border-radius: 5px;
+}
+
+.bg-c-lite-green {
+    background-color: #1c1c1c;
+}
+
+.user-profile {
+    padding: 20px 0;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.m-b-25 {
+    margin-bottom: 25px;
+}
+
+.img-radius {
+    border-radius: 5px;
+    border: 0.7px solid #3a3a3a;
+}
+
+@media only screen and (min-width: 1400px) {
+    p {
+        font-size: 14px;
+    }
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.text-muted {
+    color: #919aa3 !important;
+}
+
+.f-w-600 {
+    font-weight: 600;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
