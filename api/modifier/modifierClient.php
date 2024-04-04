@@ -3,7 +3,7 @@ function modifierClient($clientId, $data){
     try {
         global $connect;
 
-        $req = "UPDATE client SET clientNom=:clientNom,clientPrenom=:clientPrenom,clientEmail=:clientEmail,clientPass=:clientPass,clientTel=:clientTel,clientDateNaiss=:clientDateNaiss where clientId=:clientId";
+        $req = "UPDATE client SET clientNom=:clientNom,clientPrenom=:clientPrenom,clientEmail=:clientEmail,clientPass=:clientPass,clientTel=:clientTel,clientDatenais=:clientDatenais where clientId=:clientId";
         $stmt = $connect->prepare($req);
         $stmt->bindParam(":clientId", $clientId);
         $stmt->bindParam(":clientNom", $data["clientNom"]);
@@ -11,7 +11,7 @@ function modifierClient($clientId, $data){
         $stmt->bindParam(":clientEmail", $data["clientEmail"]);
         $stmt->bindParam(":clientPass", $data["clientPass"]);
         $stmt->bindParam(":clientTel", $data["clientTel"]);
-        $stmt->bindParam(":clientDateNaiss", $data["clientDateNaiss"]);
+        $stmt->bindParam(":clientDatenais", $data["clientDatenais"]);
 
         $stmt->execute();
 

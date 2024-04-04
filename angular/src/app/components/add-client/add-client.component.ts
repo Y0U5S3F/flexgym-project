@@ -33,6 +33,7 @@ export class AddClientComponent implements OnInit {
     this.clientObject.clientPass = this.formValue.value.clientPass;
     this.clientObject.clientTel = this.formValue.value.clientTel;
     this.clientObject.clientDatenais = this.formValue.value.Datenais;
+    console.log(this.formValue.value);
     
     this.clientService.createClient(this.clientObject).subscribe(res => {
       console.log(res);
