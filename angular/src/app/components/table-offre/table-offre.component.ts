@@ -39,6 +39,11 @@ export class TableOffreComponent implements OnInit {
     );
   }
 
+  getCourNomById(id: number): string {
+    const cour = this.offreData.find((cour:any) => cour.value === id.toString());
+    return cour ? `${cour.courNom}` : 'Unknown';
+  }
+
   getCours() {
     this.apiCour.getCours().subscribe(
       data => {
