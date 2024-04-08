@@ -26,13 +26,13 @@ if(isset($_POST["email"]) && isset($_POST["pass"])){
         $error= 'Donner un mot de passe';
     }else{
         $stmt = $connect->prepare(
-            "SELECT clientEmail AS email, '0rxQHAxT' AS userType
+            "SELECT clientId AS id, clientEmail AS email, '0rxQHAxT' AS userType
             FROM client WHERE clientEmail = :email AND clientPass = :pass
             UNION
-            SELECT personnelEmail AS email, 'X12nDlxf' AS userType
+            SELECT personnelId AS id, personnelEmail AS email, 'X12nDlxf' AS userType
             FROM personnel WHERE personnelEmail = :email AND personnelPass = :pass AND personnelRole='Receptioniste'
             UNION
-            SELECT adminEmail AS email, 'Mv1NpnIV' AS userType
+            SELECT adminId AS id, adminEmail AS email, 'Mv1NpnIV' AS userType
             FROM `admin` WHERE adminEmail = :email AND adminPass = :pass
         ");
         $stmt->bindParam(":email", $_POST["email"]);
@@ -47,6 +47,7 @@ if(isset($_POST["email"]) && isset($_POST["pass"])){
                     'nbf'=>time(),
                     'exp'=>time() + 3600,
                     'data'=>array(
+                        'id'=>$result[0]["id"],
                         'email'=>$result[0]["email"],
                         'userType'=>$result[0]["userType"]
                     )

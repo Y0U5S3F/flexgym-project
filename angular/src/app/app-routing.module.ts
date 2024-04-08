@@ -11,6 +11,7 @@ import { ClientAdminComponent } from './pages/client-admin/client-admin.componen
 import { OffresComponent } from './pages/offres/offres.component';
 import { CoursComponent } from './pages/cours/cours.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { AdminUserTypeGuard, PersonnelUserTypeGuard, RegularUserTypeGuard } from './services/user-type.guard';
 
 const routes: Routes = [
   {
@@ -23,11 +24,13 @@ const routes: Routes = [
   },
   {
     path: 'offreAdmin',
-    component: OffreAdminComponent
+    component: OffreAdminComponent,
+    canActivate: [PersonnelUserTypeGuard]
   },
   {
     path:'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [RegularUserTypeGuard]
   },
   {
     path: 'cours',
@@ -39,11 +42,13 @@ const routes: Routes = [
   },
   {
     path: 'courAdmin',
-    component: CoursAdminComponent
+    component: CoursAdminComponent,
+    canActivate: [PersonnelUserTypeGuard]
   },
   {
     path: 'clientAdmin',
-    component: ClientAdminComponent
+    component: ClientAdminComponent,
+    canActivate: [PersonnelUserTypeGuard]
   },
   {
     path: 'calendar-client',
@@ -53,7 +58,6 @@ const routes: Routes = [
     path: 'reclam',
     component: ReclamComponent
   }
-
 ];
 
 @NgModule({

@@ -41,6 +41,7 @@ import { TexteComponent } from './pages/cours/texte/texte.component';
 import { CoursCardsComponent } from './pages/cours/cours-cards/cours-cards.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CardProfileComponent } from './pages/profile/card-profile/card-profile.component';
+import { AdminUserTypeGuard, PersonnelUserTypeGuard, RegularUserTypeGuard } from './services/user-type.guard';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,7 @@ import { CardProfileComponent } from './pages/profile/card-profile/card-profile.
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AdminUserTypeGuard, PersonnelUserTypeGuard, RegularUserTypeGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
