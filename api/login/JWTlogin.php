@@ -1,4 +1,13 @@
 <?php
+
+header("Access-Control-Allow-Origin: http://localhost:4200");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Content-type:application/json");
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require 'vendor/autoload.php';
 require '../connect.php';
 
@@ -6,9 +15,11 @@ use Firebase\JWT\JWT;
 
 $error ='';
 
-if(isset($_POST["login"])){
+$_POST = json_decode(file_get_contents('php://input'), true);
+
+if(isset($_POST["email"]) && isset($_POST["pass"])){
     global $connect;
-    
+
     if(empty($_POST["email"])){
         $error= 'Donner un email';
     }elseif(empty($_POST["pass"])){
@@ -29,7 +40,7 @@ if(isset($_POST["login"])){
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if($result){
-            $key='your_secret_key';
+            $key='9ff65bc21be2246b86f8381b41489f8fee6338f96f82a751b0a59810e01e489a';
             $token = JWT::encode(
                 array(
                     'iat'=>time(),
