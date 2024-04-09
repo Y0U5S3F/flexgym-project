@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-client-admin',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './client-admin.component.css'
 })
 export class ClientAdminComponent {
+  constructor(private titleService: Title) { }
+
+  ngOnInit() {
+    this.titleService.setTitle('FlexGym - Management');
+  }
 
 }

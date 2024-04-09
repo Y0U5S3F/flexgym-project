@@ -2,6 +2,14 @@
     padding: 3rem !important;
 }
 
+.active-green {
+    color: green;
+}
+  
+.inactive-red {
+    color: red;
+}
+
 .user-card-full {
     overflow: hidden;
     background-color: #000;
@@ -26,7 +34,7 @@
     border-radius: 10px;
     border: none;
     margin-bottom: 30px;
-    margin-top: 50px;
+    margin-top: 0px;
 }
 
 .m-r-0 {

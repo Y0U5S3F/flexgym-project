@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth-service.service';
 import { Login,DecodedToken } from '../../Login';
 import { jwtDecode } from 'jwt-decode';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +15,13 @@ export class LoginComponent implements OnInit {
   formValue!: FormGroup;
   loginObject: Login = new Login();
 
-  constructor(private api: AuthService, private formbuilder: FormBuilder, private router: Router) { 
+  constructor(private api: AuthService, private formbuilder: FormBuilder, private router: Router, private titleService: Title) { 
     console.log("LoginComponent constructor called");
   }
 
   ngOnInit(): void {
     console.log("LoginComponent ngOnInit called");
+    this.titleService.setTitle('FlexGym - Login');
     this.formValue = this.formbuilder.group({
       email: [''],
       pass: ['']

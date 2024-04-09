@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class ProfileComponent {
 
+  constructor(private titleService: Title) { }
+
+  ngOnInit() {
+    this.titleService.setTitle('FlexGym - Profile');
+  }
 }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-header-home',
@@ -7,15 +8,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./header-home.component.css']
 })
 export class HeaderHomeComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   getUserData() {
-    const userData = JSON.parse(localStorage.getItem('userData') as string);
-    return userData && userData.userType ? userData : null;
+    if (isPlatformBrowser(this.platformId)) {
+      const userData = JSON.parse(localStorage.getItem('userData') as string);
+      return userData && userData.userType ? userData : null;
+    }
+    return null;
   }
 
   logout() {
-    localStorage.removeItem('userData');
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('userData');
+    }
     this.router.navigate(['/']);
   }
 }

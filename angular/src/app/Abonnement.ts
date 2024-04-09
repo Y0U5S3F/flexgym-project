@@ -1,6 +1,6 @@
 export class Abonnement {
     abonnementId!: number;
-    abonnementEtat!: boolean;
+    abonnementEtat!: number;
     abonnementType!: number;
     abonnementProp!: number;
     debutDate!: Date;

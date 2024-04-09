@@ -3,36 +3,29 @@
         <div class="row container d-flex justify-content-center">
             <div class="col-md-12">
                 <div class="card user-card-full">
-                    <div class="row m-l-0 m-r-0">
-                        <div class="col-sm-3">
-                            <div class="card-block text-center text-white ">
-                                <div class="m-b-25">
-                                    <img src="../../../../assets/anastase-maragos-7kEpUPB8vNk-unsplash.jpg" class="img-radius" width="300" height="300" >
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-9">
+                    <div class="row ">
+                        <div class="col-sm-12">
                             <div class="card-block">
                                 <h5 class="card-title ">Information</h5>
                                 <div class="card-info">
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Nom</p>
-                                            <h6 class="f-w-400">Oussema</h6>
+                                            <h6 class="f-w-400 text-muted">{{clientData.clientNom}}</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Prenom</p>
-                                            <h6 class=" f-w-400">Zarrouki</h6>
+                                            <h6 class=" f-w-400 text-muted">{{clientData.clientPrenom}}</h6>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Date de naissance</p>
-                                            <h6 class="f-w-400">22/12/2003</h6>
+                                            <h6 class="f-w-400 text-muted">{{clientData.clientDatenais}}</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Phone</p>
-                                            <h6 class="f-w-400">98979983</h6>
+                                            <h6 class="f-w-400 text-muted">{{clientData.clientTel}}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -41,11 +34,38 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Email</p>
-                                            <h6 class="text-muted f-w-400">mail&#64;gmail.com</h6>
+                                            <h6 class="text-muted f-w-400">{{clientData.clientEmail}}</h6>
                                         </div>
                                         <div class="col-sm-6">
                                             <p class="m-b-10 f-w-600">Password</p>
-                                            <h6 class="text-muted f-w-400">*******</h6>
+                                            <h6 class="text-muted f-w-400">{{PasswordStars(clientData.clientPass)}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="card-title">Subscription</h5>
+                                <div *ngFor="let row of abonnements">
+                                    <div class="card-info">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Name</p>
+                                                <h6 class="text-muted f-w-400">{{row.abonnementType}}</h6>
+                                              </div>
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Status</p>
+                                                <h6 class="f-w-400" *ngIf="row.abonnementEtat !== null" [ngClass]="{'active-green': row.abonnementEtat === 1, 'inactive-red': row.abonnementEtat === 0 }">
+                                                    {{ row.abonnementEtat === 1 ? 'Active' : 'Expired' }}
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Date debut </p>
+                                                <h6 class="text-muted f-w-400">{{row.debutDate}}</h6>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Date d'expiration</p>
+                                                <h6 class="text-muted f-w-400">{{row.finDate}}</h6>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
