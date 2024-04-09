@@ -13,6 +13,9 @@ import { Cour } from '../../Cour';
 })
 export class TableOffreComponent implements OnInit {
   offreData: any;
+  totalLength: any;
+  page: number = 1;
+  searchText ='';
   formValue: FormGroup = new FormGroup({});
   offreObject: Offre = new Offre();
   selectOptions: { value: string, label: string }[] = [];

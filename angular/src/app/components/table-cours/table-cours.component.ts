@@ -12,7 +12,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class TableCoursComponent implements OnInit {
   coursData!: any;
-  personnelData!: Personnel[]; // Add this line
+  totalLength: any;
+  page: number = 1;
+  searchText ='';
+  personnelData!: Personnel[];
   formValue: FormGroup = new FormGroup({});
   coursObject: Cour = new Cour();
 
@@ -20,7 +23,7 @@ export class TableCoursComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllCours();
-    this.getAllPersonnels(); // Call this method in ngOnInit
+    this.getAllPersonnels();
     this.formValue = this.formbuilder.group({
       courNom: [''],
       courDetail: [''],

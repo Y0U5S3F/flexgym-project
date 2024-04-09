@@ -1,0 +1,30 @@
+<div class="text-center table-title">
+    <h2>Calendrier du semaine</h2>
+</div>
+<div class="table-container">
+    <table class="striped-table">
+        <thead>
+            <tr>
+                <th scope="col">Monday</th>
+                <th scope="col">Tuesday</th>
+                <th scope="col">Wednesday</th>
+                <th scope="col">Thurday</th>
+                <th scope="col">Friday</th>
+                <th scope="col">Saturday</th>
+                <th scope="col">Sunday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let temps of semaine">
+                <tr *ngIf="estVide(temps)">
+                    <td *ngFor="let activite of temps" class="text-center">
+                        <ng-container *ngIf="activite">
+                            <strong class="nom">{{ activite.activiteCour }}</strong><br>
+                            <p class="time">{{ activite.activiteTemps }}</p>
+                        </ng-container>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>

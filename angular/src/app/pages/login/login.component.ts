@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("LoginComponent ngOnInit called");
     this.titleService.setTitle('FlexGym - Login');
+    console.log("LoginComponent ngOnInit called");
     this.formValue = this.formbuilder.group({
       email: [''],
       pass: ['']

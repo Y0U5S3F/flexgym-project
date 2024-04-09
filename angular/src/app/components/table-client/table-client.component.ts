@@ -10,6 +10,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class TableClientComponent implements OnInit {
   clientData!: any;
+  totalLength: any;
+  page: number = 1;
+  searchText ='';
   formValue!: FormGroup;
   clientObject: Client = new Client();
 

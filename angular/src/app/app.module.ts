@@ -43,6 +43,14 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { CardProfileComponent } from './pages/profile/card-profile/card-profile.component';
 import { AdminUserTypeGuard, PersonnelUserTypeGuard, RegularUserTypeGuard } from './services/user-type.guard';
 import { CardTextComponent } from './pages/profile/card-text/card-text.component';
+import { PersonnelAdminComponent } from './pages/personnel-admin/personnel-admin.component';
+import { CalendarAdminComponent } from './pages/calendar-admin/calendar-admin.component';
+import { TablePersonnelComponent } from './components/table-personnel/table-personnel.component';
+import { AddPersonnelComponent } from './components/add-personnel/add-personnel.component';
+import { AddCalendarComponent } from './components/add-calendar/add-calendar.component';
+import { CalendarComponentComponent } from './components/calendar-component/calendar-component.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SearchPipe } from './components/table-client/pipe/search.pipe';
 
 @NgModule({
   declarations: [
@@ -81,7 +89,14 @@ import { CardTextComponent } from './pages/profile/card-text/card-text.component
     CoursCardsComponent,
     ProfileComponent,
     CardProfileComponent,
-    CardTextComponent
+    CardTextComponent,
+    PersonnelAdminComponent,
+    CalendarAdminComponent,
+    TablePersonnelComponent,
+    AddPersonnelComponent,
+    AddCalendarComponent,
+    CalendarComponentComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -90,7 +105,8 @@ import { CardTextComponent } from './pages/profile/card-text/card-text.component
     FontAwesomeModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [AdminUserTypeGuard, PersonnelUserTypeGuard, RegularUserTypeGuard],
   bootstrap: [AppComponent]

@@ -78,3 +78,14 @@ table :last-child >:last-child > td {
       -moz-box-shadow: none!important;
       box-shadow: none!important;
   }
+  .pagination{
+    padding: 20px 16px;
+    float: right;
+    font-size: 18px;
+    color:white;
+  }
+
+  .pagination::ng-deep .ngx-pagination .current {
+    background: #E7FE58;
+    color:#000;
+  }

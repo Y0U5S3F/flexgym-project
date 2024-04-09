@@ -12,13 +12,6 @@ export class TableCalendarComponent implements OnInit {
     constructor(private tableCalendarService: TableCalendarService) { }
 
     ngOnInit(): void {
-        this.getWeekActivities();
-    }
-
-    getWeekActivities(): void {
-        this.tableCalendarService.getWeekActivities()
-            .subscribe(weekActivities => {
-                this.weekDays = weekActivities;
-            });
+        
     }
 }

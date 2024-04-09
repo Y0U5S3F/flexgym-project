@@ -12,6 +12,8 @@ import { OffresComponent } from './pages/offres/offres.component';
 import { CoursComponent } from './pages/cours/cours.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AdminUserTypeGuard, PersonnelUserTypeGuard, RegularUserTypeGuard } from './services/user-type.guard';
+import { CalendarAdminComponent } from './pages/calendar-admin/calendar-admin.component';
+import { PersonnelAdminComponent } from './pages/personnel-admin/personnel-admin.component';
 
 const routes: Routes = [
   {
@@ -49,6 +51,18 @@ const routes: Routes = [
     path: 'clientAdmin',
     component: ClientAdminComponent,
     canActivate: [PersonnelUserTypeGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'calendarAdmin',
+    component: CalendarAdminComponent
+  },
+  {
+    path: 'personnelAdmin',
+    component: PersonnelAdminComponent
   },
   {
     path: 'calendar-client',
