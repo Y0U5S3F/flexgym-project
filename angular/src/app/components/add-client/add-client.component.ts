@@ -27,24 +27,23 @@ export class AddClientComponent implements OnInit {
     });
   }
   addClient() {
-    this.clientObject.clientNom = this.formValue.value.clientNom;
-    this.clientObject.clientPrenom = this.formValue.value.clientPrenom;
-    this.clientObject.clientEmail = this.formValue.value.clientEmail;
-    this.clientObject.clientPass = this.formValue.value.clientPass;
-    this.clientObject.clientTel = this.formValue.value.clientTel;
-    this.clientObject.clientDatenais = this.formValue.value.Datenais;
-    console.log(this.formValue.value);
-    
-    this.clientService.createClient(this.clientObject).subscribe(res => {
-      console.log(res);
-        let ref = document.getElementById("cancel");
-        ref?.click();
-        this.formValue.reset();
-      },
-      err=>{
-        console.error(err);
-        alert(err.message)
-      });
-    }
-
+  this.clientObject.clientNom = this.formValue.value.clientNom;
+  this.clientObject.clientPrenom = this.formValue.value.clientPrenom;
+  this.clientObject.clientEmail = this.formValue.value.clientEmail;
+  this.clientObject.clientPass = this.formValue.value.clientPass;
+  this.clientObject.clientTel = this.formValue.value.clientTel;
+  this.clientObject.clientDatenais = this.formValue.value.clientDatenais;
+  console.log(this.formValue.value);
+  
+  this.clientService.createClient(this.clientObject).subscribe(res => {
+    console.log(res);
+      let ref = document.getElementById("cancel");
+      ref?.click();
+      this.formValue.reset();
+    },
+    err=>{
+      console.error(err);
+      alert(err.message)
+    });
   }
+}
