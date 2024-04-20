@@ -1,5 +1,4 @@
 <?php 
-
 function ajouterClient($data){
     try {
         global $connect;
@@ -26,5 +25,4 @@ function ajouterClient($data){
             die("Error: " . $e->getMessage());
         }
     }
-
 ?>
