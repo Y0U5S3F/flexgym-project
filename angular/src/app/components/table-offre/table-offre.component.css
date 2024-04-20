@@ -4,7 +4,9 @@
   margin-bottom: 30px;
   color: white;
 }
-
+.search-input{
+  background-color: #000;
+}
 .table-container{
   display: flex;
   flex-direction: column;
