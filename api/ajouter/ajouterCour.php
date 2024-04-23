@@ -1,8 +1,17 @@
 <?php 
-
-function ajouterCour($data){
+function ajouterCour($data, $file){
     try {
         global $connect;
+
+        $dir = $_SERVER['DOCUMENT_ROOT'] . '/img/';
+        $image = $dir . basename($file['name']);
+
+        if (move_uploaded_file($file['tmp_name'], $image)) {
+            echo json_encode(["success" => "Image uploaded successfully"]);
+        } else {
+            echo json_encode(['error' => 'Failed to upload image']);
+            return;
+        }
 
         $req = "SELECT * FROM personnel WHERE personnelId=:courCoach AND personnelRole='Coach'";
         $stmt = $connect->prepare($req);
@@ -14,25 +23,25 @@ function ajouterCour($data){
             return;
         }
 
-        $req = "INSERT INTO cour(courNom,courDetail,courCoach) 
-        Values(:nom,:detail,:coach)";
+        $req = "INSERT INTO cour(courNom,courDetail,courCoach,courImg) 
+        Values(:nom,:detail,:coach,:img)";
         $stmt = $connect->prepare($req);
         $stmt->bindParam(":nom", $data["courNom"]);
         $stmt->bindParam(":detail", $data["courDetail"]);
         $stmt->bindParam(":coach", $data["courCoach"]);
+        $stmt->bindParam(":img", $image);
         $stmt->execute();
 
         if($stmt->rowCount() == 0) {
             http_response_code(400);
-            $msg = ["erreur" => "Cour non Cree"];
-            echo json_encode($msg);
+            echo json_encode(["error" => "Failed to create Cour"]);
         } else {
-            echo json_encode(['success' => 'Cour Cree']);
+            echo json_encode(['success' => 'Cour created successfully']);
         }
 
     } catch (PDOException $e) {
-        die("Error: " . $e->getMessage());
+        http_response_code(500);
+        echo json_encode(["error" => "Server error: " . $e->getMessage()]);
     }
 }
-
 ?>

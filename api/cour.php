@@ -32,16 +32,21 @@ switch ($var) {
         }
         break;
     case 'POST':
-        $data = json_decode(file_get_contents('php://input'), true);
-        if ($data) {
-            ajouterCour($data);
+
+        $data = json_decode($_POST['json_data'], true);
+        $file = $_FILES['userfile'];
+        
+        if ($data && $file) {
+            ajouterCour($data, $file);
         } else {
             http_response_code(400);
-            echo json_encode(array("Error: " => "Invalid JSON data"));
+            echo json_encode(array("Error: " => "Invalid data or file"));
         }
         break;
     case 'PUT':
+
         $data = json_decode(file_get_contents('php://input'), true);
+
         if ($data && isset($_GET["courId"]) && ($_GET["courId"] != null)) {
             $courId = $_GET["courId"];
             modifierCour($courId, $data);
