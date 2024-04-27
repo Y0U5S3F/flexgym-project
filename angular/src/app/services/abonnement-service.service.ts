@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Abonnement } from '../Abonnement';
 import { map } from 'rxjs/operators';
@@ -14,40 +14,41 @@ export class AbonnementService {
 
   constructor(private http: HttpClient) { }
 
-  //Post
   createAbonnement(data:any){
-    return this.http.post<any>(this.apiUrlAbonnement, data)
+    const headers = new HttpHeaders().set('token', `${localStorage.getItem('token')}`);
+    return this.http.post<any>(this.apiUrlAbonnement, data, { headers })
     .pipe(map((res:any)=>{
       return res;
     }))
   }
 
-  //Get
   getAbonnements(){
-    return this.http.get<any>(this.apiUrlAbonnement)
+    const headers = new HttpHeaders().set('token', `${localStorage.getItem('token')}`);
+    return this.http.get<any>(this.apiUrlAbonnement, { headers })
     .pipe(map((res:any)=>{
       return res;
     }))
   }
 
   getAbonnement(id: number){
-    return this.http.get<any>(`${this.apiUrlAbonnement}?abonnementId=${id}`)
+    const headers = new HttpHeaders().set('token', `${localStorage.getItem('token')}`);
+    return this.http.get<any>(`${this.apiUrlAbonnement}?abonnementId=${id}`, { headers })
     .pipe(map((res:any)=>{
       return res;
     }))
   }
 
-  //Delete
   deleteAbonnement(id: number){
-    return this.http.delete<any>(`${this.apiUrlAbonnement}?abonnementId=${id}`)
+    const headers = new HttpHeaders().set('token', `${localStorage.getItem('token')}`);
+    return this.http.delete<any>(`${this.apiUrlAbonnement}?abonnementId=${id}`, { headers })
     .pipe(map((res:any)=>{
       return res;
     }))
   }
 
-  //Put
   updateAbonnement(data:any,id:number){
-    return this.http.put<any>(`${this.apiUrlAbonnement}?abonnementId=${id}`, data)
+    const headers = new HttpHeaders().set('token', `${localStorage.getItem('token')}`);
+    return this.http.put<any>(`${this.apiUrlAbonnement}?abonnementId=${id}`, data, { headers })
     .pipe(map((res:any)=>{
       return res;
     }))

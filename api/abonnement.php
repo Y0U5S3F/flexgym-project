@@ -2,8 +2,8 @@
 
 header("Access-Control-Allow-Origin: http://localhost:4200");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
-header("Content-type:application/json");
+header("Access-Control-Allow-Headers: Content-Type, token");
+header("Content-type: application/json");
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -18,7 +18,7 @@ $var = $_SERVER['REQUEST_METHOD'];
 
 switch ($var) {
     case 'GET':
-        if(isset($_GET["abonnementId"]) && ($_GET['abonnementId'] != null)) {
+        if (isset($_GET["abonnementId"]) && ($_GET['abonnementId'] != null)) {
             $abonnementId = $_GET["abonnementId"];
             chargerAbonnement($abonnementId);
         } else {
@@ -26,7 +26,7 @@ switch ($var) {
         }
         break;
     case 'DELETE':
-        if(isset($_GET["abonnementId"]) && ($_GET["abonnementId"] != null)) {
+        if (isset($_GET["abonnementId"]) && ($_GET["abonnementId"] != null)) {
             $abonnementId = $_GET["abonnementId"];
             supprimerAbonnement($abonnementId);
         }
@@ -37,7 +37,7 @@ switch ($var) {
             ajouterAbonnement($data);
         } else {
             http_response_code(400);
-            echo json_encode(array("Error: " => "Invalid JSON data"));
+            echo json_encode(array("Error" => "Invalid JSON data"));
         }
         break;
     case 'PUT':
@@ -47,8 +47,9 @@ switch ($var) {
             modifierAbonnement($abonnementId, $data);
         } else {
             http_response_code(400);
-            echo json_encode(array("Error: " => "Invalid JSON data or missing ID"));
+            echo json_encode(array("Error" => "Invalid JSON data or missing ID"));
         }
         break;
 }
+
 ?>

@@ -32,27 +32,37 @@ switch ($var) {
         }
         break;
     case 'POST':
-
-        $data = json_decode($_POST['json_data'], true);
-        $file = $_FILES['userfile'];
-        
-        if ($data && $file) {
+        if(isset($_POST['courNom']) && isset($_POST['courDetail']) && isset($_POST['courCoach']) && isset($_FILES['courImg'])) {
+            $data = array(
+                'courNom' => $_POST['courNom'],
+                'courDetail' => $_POST['courDetail'],
+                'courCoach' => $_POST['courCoach']
+            );
+            $file = $_FILES['courImg'];
             ajouterCour($data, $file);
         } else {
             http_response_code(400);
             echo json_encode(array("Error: " => "Invalid data or file"));
         }
-        break;
+        break;    
     case 'PUT':
-
-        $data = json_decode(file_get_contents('php://input'), true);
-
-        if ($data && isset($_GET["courId"]) && ($_GET["courId"] != null)) {
+        parse_str(file_get_contents("php://input"), $_PUT);
+        if(isset($_PUT['courNom']) && isset($_PUT['courDetail']) && isset($_PUT['courCoach']) && isset($_PUT['courImg']) && isset($_GET["courId"]) && ($_GET["courId"] != null)) {
+            $data = array(
+                'courNom' => $_PUT['courNom'],
+                'courDetail' => $_PUT['courDetail'],
+                'courCoach' => $_PUT['courCoach']
+            );
+            $fileData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $_PUT['courImg']));
+            $filePath = '/path/to/your/directory/' . uniqid() . '.png';
+            file_put_contents($filePath, $fileData);
             $courId = $_GET["courId"];
-            modifierCour($courId, $data);
+            modifierCour($courId, $data, $filePath);
         } else {
             http_response_code(400);
-            echo json_encode(array("Error: " => "Invalid JSON data or missing ID"));
+            echo json_encode(array("Error: " => "Invalid data or file"));
         }
         break;
 }
+
+?>

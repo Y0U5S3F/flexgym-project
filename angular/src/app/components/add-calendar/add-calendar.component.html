@@ -1,1 +1,32 @@
-<p>add-calendar works!</p>
+<button type="button" class="btn modal-button" data-bs-toggle="modal" data-bs-target="#addModal">
+    Ajouter
+</button>
+  
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+    <button type="button" id="cancel"class="btn-close btn-close-white btn-custom" data-bs-dismiss="modal" id="close" aria-label="Close"></button>
+    <h1 class="modal-title " id="exampleModalLabel">Add Calendrier</h1>
+    <div class="modal-body">
+        <form [formGroup]="formValue" (ngSubmit)="addActivite()">
+            <div class="input-group">
+                <span class="input-group-text">Jour</span>
+                <select formControlName="activiteJour" class="form-control">
+                    <option *ngFor="let day of ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche']" [value]="day">{{day}}</option>
+                  </select>
+            </div>
+            <div class="input-group">
+                <span class="input-group-text">Temps</span>
+                <input type="text" formControlName="activiteTemps" class="form-control" placeholder="Activite Temps">
+            </div>
+            <div class="input-group">
+                <span class="input-group-text">Cour</span>
+                <input type="number" formControlName="activiteCour" class="form-control" placeholder="Activite Cour">
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn modal-button">Add</button>
+            </div>
+        </form>
+    </div>
+    </div>
+</div>

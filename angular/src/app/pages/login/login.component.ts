@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
           console.error('No token in response');
           return;
         }
+        localStorage.setItem('token', res.token);
         const userData = JSON.parse(localStorage.getItem('userData') || '{}');
         const userType = userData.userType;
         if (userType === 'X12nDlxf' || userType === 'Mv1NpnIV') {

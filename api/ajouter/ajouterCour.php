@@ -1,4 +1,5 @@
 <?php 
+
 function ajouterCour($data, $file){
     try {
         global $connect;
@@ -6,10 +7,13 @@ function ajouterCour($data, $file){
         $dir = $_SERVER['DOCUMENT_ROOT'] . '/img/';
         $image = $dir . basename($file['name']);
 
-        if (move_uploaded_file($file['tmp_name'], $image)) {
-            echo json_encode(["success" => "Image uploaded successfully"]);
-        } else {
-            echo json_encode(['error' => 'Failed to upload image']);
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            echo json_encode(['error' => 'File upload error: ' . $file['error']]);
+            return;
+        }
+
+        if (!move_uploaded_file($file['tmp_name'], $image)) {
+            echo json_encode(['error' => 'Failed to move uploaded file']);
             return;
         }
 
@@ -36,7 +40,7 @@ function ajouterCour($data, $file){
             http_response_code(400);
             echo json_encode(["error" => "Failed to create Cour"]);
         } else {
-            echo json_encode(['success' => 'Cour created successfully']);
+            echo json_encode(['success' => 'Image uploaded and Cour created successfully']);
         }
 
     } catch (PDOException $e) {
@@ -44,4 +48,5 @@ function ajouterCour($data, $file){
         echo json_encode(["error" => "Server error: " . $e->getMessage()]);
     }
 }
+
 ?>
