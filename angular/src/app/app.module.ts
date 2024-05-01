@@ -54,6 +54,7 @@ import { SearchPipe } from './components/table-client/pipe/search.pipe';
 import { TableAbonnementComponent } from './components/table-abonnement/table-abonnement.component';
 import { AddAbonnementComponent } from './components/add-abonnement/add-abonnement.component';
 import { AbonnementAdminComponent } from './pages/abonnement-admin/abonnement-admin.component';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 @NgModule({
   declarations: [
@@ -111,6 +112,9 @@ import { AbonnementAdminComponent } from './pages/abonnement-admin/abonnement-ad
     FontAwesomeModule,
     NgbModule,
     FormsModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger'
+    }),
     ReactiveFormsModule,
     NgxPaginationModule
   ],
