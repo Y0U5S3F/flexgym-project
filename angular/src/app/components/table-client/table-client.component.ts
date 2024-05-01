@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './table-client.component.html',
   styleUrls: ['./table-client.component.css']
 })
+
 export class TableClientComponent implements OnInit {
   clientData!: any;
   totalLength: any;
