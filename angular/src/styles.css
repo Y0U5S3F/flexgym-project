@@ -10,7 +10,8 @@ body {
     min-height: 100vh;
     background-color: black;
     margin: 54px 64px;
-    font-family: "Roboto Slab", serif;
+    font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
-    font-style: normal;
+    font-weight: 400;
 }
+

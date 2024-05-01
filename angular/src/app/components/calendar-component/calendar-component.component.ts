@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { TableCalendarService } from './../../services/table-calendar.service';
 import { CourService } from '../../services/cour-service.service';
+import { Calendrier } from '../../Calendrier';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,14 +13,30 @@ import { Observable } from 'rxjs';
   styleUrls: ['./calendar-component.component.css']
 })
 export class CalendarComponentComponent {
-  semaine: any[][] = Array(24).fill(null).map(() => Array(7).fill(null));
+  semaine: Calendrier[][] = Array(24).fill(null).map(() => Array(7).fill(null));
+  courNoms: { [id: number]: string } = {};
 
-  constructor(private calendrierService: TableCalendarService, private courService: CourService ) { }
+  constructor(private router: Router, private calendrierService: TableCalendarService, private courService: CourService, private formBuilder: FormBuilder ) { 
+
+  }
 
   ngOnInit(): void {
-    this.calendrierService.getActivites().subscribe(data => {
+    this.loadActivities();
+  }
+
+  loadActivities(): void {
+    this.calendrierService.getActivites().subscribe((data: Calendrier[]) => {
       this.semaineData(data);
+      data.forEach((activite: Calendrier) => {
+        this.getByIdCal(activite.activiteCour).subscribe((courNom: string) => {
+          this.courNoms[activite.activiteCour] = courNom;
+        });
+      });
     });
+  }
+  
+  getByIdCal(id: number): Observable<string> {
+    return this.courService.getCour(id).pipe(map(res => String(res.courNom)));
   }
 
   semaineData(data: any[]): void {
@@ -38,13 +57,8 @@ export class CalendarComponentComponent {
     });
   }
 
-  getByIdCal(id:number){
-    this.courService.getCour(id).subscribe(res => {
-      return String(res.courNom);
-    });
-  }
-
   estVide(timeSlot: any[]): boolean {
     return timeSlot.some(course => course);
   }
+
 }

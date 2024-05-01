@@ -44,10 +44,6 @@
         <div class="modal-body">
             <form [formGroup]="formValue" (ngSubmit)="updateActivite()">
                 <div class="input-group">
-                    <span class="input-group-text">ID</span>
-                    <input type="number" formControlName="activiteId" class="form-control" placeholder="Activite ID">
-                </div>
-                <div class="input-group">
                     <span class="input-group-text">Jour</span>
                     <select formControlName="activiteJour" class="form-control">
                         <option *ngFor="let day of ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche']" [value]="day">{{day}}</option>

@@ -43,8 +43,8 @@ export class TableOffreComponent implements OnInit {
   }
 
   getCourNomById(id: number): string {
-    const cour = this.offreData.find((cour:any) => cour.value === id.toString());
-    return cour ? `${cour.courNom}` : 'Unknown';
+    const cour = this.selectOptions.find((cour:any) => cour.value === id);
+    return cour ? `${cour.label}` : 'Unknown';
   }
 
   getCours() {
@@ -80,8 +80,7 @@ export class TableOffreComponent implements OnInit {
 
     this.apiOffre.updateOffre(this.offreObject, this.offreObject.offreId)
       .subscribe(res => {
-        alert("updated offre");
-        let ref = document.getElementById("cancel");
+        let ref = document.getElementById("close");
         ref?.click();
         this.formValue.reset();
         this.getAllOffre();

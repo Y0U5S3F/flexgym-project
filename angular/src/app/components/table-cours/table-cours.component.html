@@ -8,11 +8,11 @@
     <table class="striped-table">
       <thead>
         <tr>
-          <th scope="col">CourID</th>
-          <th scope="col">Nomcour</th>
-          <th scope="col">Detailscour</th>
-          <th scope="col">Nomcoach</th>
-          <th scope="col">Imagecour</th>
+          <th scope="col">ID</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Details</th>
+          <th scope="col">Coach</th>
+          <th scope="col">Image</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
@@ -21,8 +21,8 @@
           <td>{{row.courId}}</td>
           <td>{{row.courNom}}</td>
           <td>{{row.courDetail}}</td>
-          <td><a [href]="'http://localhost:80/' + row.courImg" target="_blank">View Image</a></td>
           <td>{{getCoachNameById(row.courCoach)}}</td>
+          <td><a [href]="'http://localhost:80/' + row.courImg" target="_blank">View Image</a></td>
           <td>
             <app-button (click)="onEdit(row)" text="Modifier" data-bs-toggle="modal" data-bs-target="#modifierModal" color="#000" textColor="#E7FE58"></app-button>
             <app-button (click)="deleteCours(row)" text="Annuler" color="#000" textColor="#DC3545"></app-button>

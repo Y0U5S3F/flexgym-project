@@ -51,6 +51,10 @@ import { AddCalendarComponent } from './components/add-calendar/add-calendar.com
 import { CalendarComponentComponent } from './components/calendar-component/calendar-component.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SearchPipe } from './components/table-client/pipe/search.pipe';
+import { TableAbonnementComponent } from './components/table-abonnement/table-abonnement.component';
+import { AddAbonnementComponent } from './components/add-abonnement/add-abonnement.component';
+import { AbonnementAdminComponent } from './pages/abonnement-admin/abonnement-admin.component';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 @NgModule({
   declarations: [
@@ -96,7 +100,10 @@ import { SearchPipe } from './components/table-client/pipe/search.pipe';
     AddPersonnelComponent,
     AddCalendarComponent,
     CalendarComponentComponent,
-    SearchPipe
+    SearchPipe,
+    TableAbonnementComponent,
+    AddAbonnementComponent,
+    AbonnementAdminComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -105,6 +112,9 @@ import { SearchPipe } from './components/table-client/pipe/search.pipe';
     FontAwesomeModule,
     NgbModule,
     FormsModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger'
+    }),
     ReactiveFormsModule,
     NgxPaginationModule
   ],
