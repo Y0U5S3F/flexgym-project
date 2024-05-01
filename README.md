@@ -42,6 +42,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 - [XAMPP](https://www.apachefriends.org/index.html) - Web server solution stack
 
 ## Authors 👥
-
+- **Rippouzza** - [Rippouzza](https://github.com/Rippouzza)
 - **Y0U5S3F** - [Y0U5S3F](https://github.com/Y0U5S3F)
 - **YoNexuss** - [YoNexuss](https://github.com/YoNexuss)
