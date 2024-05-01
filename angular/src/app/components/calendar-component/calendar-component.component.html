@@ -19,7 +19,7 @@
                 <tr *ngIf="estVide(temps)">
                     <td *ngFor="let activite of temps" class="text-center">
                         <ng-container *ngIf="activite">
-                            <strong class="nom">{{ activite.activiteCour }}</strong><br>
+                            <strong class="nom">{{ courNoms[activite.activiteCour] }}</strong><br>
                             <p class="time">{{ activite.activiteTemps }}</p>
                         </ng-container>
                     </td>
