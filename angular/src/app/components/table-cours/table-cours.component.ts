@@ -49,7 +49,7 @@ export class TableCoursComponent implements OnInit {
   }
 
   deleteCours(row: any) {
-    this.apiCour.deleteCour(row.id).subscribe(() => {
+    this.apiCour.deleteCour(row.courId).subscribe(() => {
       this.getAllCours();
     });
   }
@@ -65,8 +65,11 @@ export class TableCoursComponent implements OnInit {
     this.coursObject.courNom = this.formValue.value.courNom;
     this.coursObject.courDetail = this.formValue.value.courDetail;
     this.coursObject.courCoach = this.formValue.value.courCoach;
-
-    this.apiCour.updateCour(this.coursObject, this.coursObject.courId).subscribe((res: any) => {
+  
+    const file = this.formValue.get('courImg')?.value;
+  
+    this.apiCour.updateCour(this.coursObject, file, this.coursObject.courId)
+    .subscribe((res: any) => {
       alert("Cours updated successfully");
       let ref = document.getElementById("cancel");
       ref?.click();

@@ -3,4 +3,5 @@ export class Cour{
     courNom!: string;
     courDetail!: string;
     courCoach!:number;
+    courImg!: string;
 }

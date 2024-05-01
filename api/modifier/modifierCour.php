@@ -1,8 +1,21 @@
 <?php
 
-function modifierCour($courId, $data){
+function modifierCour($courId, $data, $file){
     try {
         global $connect;
+
+        $dir = $_SERVER['DOCUMENT_ROOT'] . '/img/';
+        $image = $dir . basename($file['name']);
+
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            echo json_encode(['error' => 'File upload error: ' . $file['error']]);
+            return;
+        }
+
+        if (!move_uploaded_file($file['tmp_name'], $image)) {
+            echo json_encode(['error' => 'Failed to move uploaded file']);
+            return;
+        }
 
         $req = "SELECT * FROM personnel WHERE personnelId=:courCoach AND personnelRole='Coach'";
         $stmt = $connect->prepare($req);
@@ -14,28 +27,25 @@ function modifierCour($courId, $data){
             return;
         }
 
-        $connect->exec("SET FOREIGN_KEY_CHECKS=0;");
-
-        $req = "UPDATE cour SET courNom=:courNom,courDetail=:courDetail,courCoach=:courCoach where courId=:courId";
+        $req = "UPDATE cour SET courNom=:nom, courDetail=:detail, courCoach=:coach, courImg=:img WHERE courId=:id";
         $stmt = $connect->prepare($req);
-        $stmt->bindParam(":courId", $courId);
-        $stmt->bindParam(":courNom", $data['courNom']);
-        $stmt->bindParam(":courDetail", $data['courDetail']);
-        $stmt->bindParam(":courCoach", $data['courCoach']);
-
+        $stmt->bindParam(":nom", $data["courNom"]);
+        $stmt->bindParam(":detail", $data["courDetail"]);
+        $stmt->bindParam(":coach", $data["courCoach"]);
+        $stmt->bindParam(":img", $image);
+        $stmt->bindParam(":id", $courId);
         $stmt->execute();
-
-        $connect->exec("SET FOREIGN_KEY_CHECKS=1;");
 
         if($stmt->rowCount() == 0) {
             http_response_code(400);
-            $msg = ["erreur" => "Cour non existant"];
-            echo json_encode($msg);
+            echo json_encode(["error" => "Failed to modify Cour"]);
         } else {
-            echo json_encode(['success' => 'Cour modifie']);
+            echo json_encode(['success' => 'Image uploaded and Cour modified successfully']);
         }
+
     } catch (PDOException $e) {
-        die("Error: " . $e->getMessage());
+        http_response_code(500);
+        echo json_encode(["error" => "Server error: " . $e->getMessage()]);
     }
 }
 

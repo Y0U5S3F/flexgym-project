@@ -15,12 +15,18 @@ export class CourService {
   constructor(private http: HttpClient) { }
 
   //Post
-  createCour(data:any){
-    return this.http.post<any>(this.apiUrlCour, data)
-    .pipe(map((res:any)=>{
+  createCour(data: any, file: File) {
+  const formData: FormData = new FormData();
+  formData.append('courNom', data.courNom);
+  formData.append('courDetail', data.courDetail);
+  formData.append('courCoach', data.courCoach.toString());
+  formData.append('courImg', file, file.name);
+
+  return this.http.post<any>(this.apiUrlCour, formData)
+    .pipe(map((res: any) => {
       return res;
-    }))
-  }
+    }));
+}
 
   //Get
   getCours(){
@@ -46,10 +52,16 @@ export class CourService {
   }
 
   //Put
-  updateCour(data:any,id:number){
-    return this.http.put<any>(`${this.apiUrlCour}?courId=${id}`, data)
-    .pipe(map((res:any)=>{
-      return res;
-    }))
+  updateCour(data: any, file: File, id: number) {
+    const formData: FormData = new FormData();
+    formData.append('courNom', data.courNom);
+    formData.append('courDetail', data.courDetail);
+    formData.append('courCoach', data.courCoach.toString());
+    formData.append('courImg', file, file.name);
+  
+    return this.http.put<any>(`${this.apiUrlCour}?courId=${id}`, formData)
+      .pipe(map((res: any) => {
+        return res;
+      }));
   }
 }

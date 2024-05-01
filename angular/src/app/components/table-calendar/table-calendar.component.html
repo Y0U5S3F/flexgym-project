@@ -1,0 +1,71 @@
+<div class="text-center table-title">
+    <h2>Calendrier du semaine</h2>
+</div>
+<div class="table-container">
+    <table class="striped-table">
+        <thead>
+            <tr>
+                <th scope="col">Monday</th>
+                <th scope="col">Tuesday</th>
+                <th scope="col">Wednesday</th>
+                <th scope="col">Thurday</th>
+                <th scope="col">Friday</th>
+                <th scope="col">Saturday</th>
+                <th scope="col">Sunday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let temps of semaine">
+              <tr *ngIf="estVide(temps)">
+                <td *ngFor="let activite of temps" class="text-center">
+                  <ng-container *ngIf="activite">
+                    <div class="activite-container">
+                      <div class="content">
+                        <strong class="nom">{{ courNoms[activite.activiteCour] }}</strong><br>
+                        <p class="time">{{ activite.activiteTemps }}</p>
+                      </div>
+                      <div class="buttons">
+                        <button class="btn btn-primary mr-2" data-bs-toggle="modal" data-bs-target="#modifierModal" color="#000" textColor="#E7FE58" (click)="onEdit(activite)">Edit</button>
+                        <button class="btn btn-danger" (click)="deleteActivite(activite.activiteId)">Annuler</button>
+                    </div>
+                    </div>
+                  </ng-container>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+    </table>
+    <app-add-calendar></app-add-calendar>
+    <div class="modal fade" id="modifierModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <button type="button" id="cancel"class="btn-close btn-close-white btn-custom" data-bs-dismiss="modal" id="close" aria-label="Close"></button>
+        <h1 class="modal-title " id="exampleModalLabel">Modifier Calendrier</h1>
+        <div class="modal-body">
+            <form [formGroup]="formValue" (ngSubmit)="updateActivite()">
+                <div class="input-group">
+                    <span class="input-group-text">ID</span>
+                    <input type="number" formControlName="activiteId" class="form-control" placeholder="Activite ID">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text">Jour</span>
+                    <select formControlName="activiteJour" class="form-control">
+                        <option *ngFor="let day of ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche']" [value]="day">{{day}}</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text">Temps</span>
+                    <input type="text" formControlName="activiteTemps" class="form-control" placeholder="Activite Temps">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text">Cour</span>
+                    <input type="number" formControlName="activiteCour" class="form-control" placeholder="Activite Cour">
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn modal-button">Save</button>
+                </div>
+            </form>
+        </div>
+        </div>
+        </div>
+</div>

@@ -38,6 +38,12 @@ export class CalendarComponentComponent {
     });
   }
 
+  getByIdCal(id:number){
+    this.courService.getCour(id).subscribe(res => {
+      return String(res.courNom);
+    });
+  }
+
   estVide(timeSlot: any[]): boolean {
     return timeSlot.some(course => course);
   }

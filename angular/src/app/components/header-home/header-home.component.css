@@ -10,6 +10,15 @@
     cursor: pointer;  
     
 }
+.grey-btn{
+    background-color: #E7FE58;
+    color:#000;
+    margin-right: 5px;
+}
+
+.sign-out{
+    margin-right: 5px;
+}
 
 .green-span {
     color: #E7FE58;
