@@ -1,4 +1,3 @@
-//satarr allah
 export class Abonnement {
     abonnementId!: number;
     abonnementEtat!: number;
