@@ -1,0 +1,193 @@
+** Message: 19:40:50.788: Connecting to org.freedesktop.Tracker3.Miner.Files
+
+** (org.gnome.Nautilus:59696): WARNING **: 19:40:51.332: Unable to get contents of the bookmarks file: Error opening file /root/.gtk-bookmarks: No such file or directory
+
+(org.gnome.Nautilus:59696): Gtk-CRITICAL **: 19:40:51.445: Unable to register the application: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer: unit failed.
+
+(org.gnome.Nautilus:59696): Gtk-CRITICAL **: 19:40:53.176: Unable to register the application: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer: unit failed.
+
+(org.gnome.Nautilus:59696): Gtk-CRITICAL **: 19:40:53.350: Unable to register the application: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer: unit failed.
+
+(org.gnome.Nautilus:59696): Gtk-CRITICAL **: 19:40:54.493: Unable to register the application: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer: unit failed.
+
+(org.gnome.Nautilus:59696): Gtk-CRITICAL **: 19:41:00.279: Unable to register the application: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer: unit failed.
+Gtk-Message: 19:41:00.731: Failed to load module "pk-gtk-module"
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/spyro_plus/spyro_plus.py", line 18, in <module>
+    from gimpshelf import shelf
+  File "/usr/lib64/gimp/2.0/python/gimpshelf.py", line 40, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/python-eval/python-eval.py", line 19, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/python-console/python-console.py", line 19, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/py-slice/py-slice.py", line 30, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/palette-to-gradient/palette-to-gradient.py", line 16, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/palette-sort/palette-sort.py", line 17, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/palette-offset/palette-offset.py", line 16, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/histogram-export/histogram-export.py", line 40, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/gradients-save-as-css/gradients-save-as-css.py", line 25, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/foggify/foggify.py", line 19, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/file-openraster/file-openraster.py", line 20, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/colorxhtml/colorxhtml.py", line 24, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Gtk-Message: 19:41:05.195: Failed to load module "pk-gtk-module"
+
+(org.gnome.Nautilus:59696): Gtk-CRITICAL **: 19:41:08.967: Unable to register the application: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer: unit failed.
+
+(org.gnome.Nautilus:59696): Gtk-CRITICAL **: 19:41:11.048: Unable to register the application: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer: unit failed.
+
+(org.gnome.Nautilus:59696): Gtk-CRITICAL **: 19:41:11.681: Unable to register the application: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer: unit failed.
+
+(org.gnome.Nautilus:59696): Gtk-CRITICAL **: 19:41:12.248: Unable to register the application: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer: unit failed.
+
+(org.gnome.Nautilus:59696): Gtk-CRITICAL **: 19:41:13.931: Unable to register the application: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer: unit failed.
+
+(org.gnome.Nautilus:59696): Gtk-CRITICAL **: 19:41:28.706: Unable to register the application: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Could not activate remote peer: unit failed.
+Gtk-Message: 19:41:29.089: Failed to load module "pk-gtk-module"
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/spyro_plus/spyro_plus.py", line 18, in <module>
+    from gimpshelf import shelf
+  File "/usr/lib64/gimp/2.0/python/gimpshelf.py", line 40, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/python-eval/python-eval.py", line 19, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/python-console/python-console.py", line 19, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/py-slice/py-slice.py", line 30, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/palette-to-gradient/palette-to-gradient.py", line 16, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/palette-sort/palette-sort.py", line 17, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/palette-offset/palette-offset.py", line 16, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/histogram-export/histogram-export.py", line 40, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/gradients-save-as-css/gradients-save-as-css.py", line 25, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/foggify/foggify.py", line 19, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/file-openraster/file-openraster.py", line 20, in <module>
+    from gimpfu import *
+  File "/usr/lib64/gimp/2.0/python/gimpfu.py", line 76, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Traceback (most recent call last):
+  File "/usr/lib64/gimp/2.0/plug-ins/colorxhtml/colorxhtml.py", line 24, in <module>
+    import gimp
+ImportError: could not import pygtk
+/usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
+Gtk-Message: 19:41:30.691: Failed to load module "pk-gtk-module"

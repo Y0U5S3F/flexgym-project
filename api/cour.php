@@ -46,23 +46,19 @@ switch ($var) {
         }
         break;    
     case 'PUT':
-        parse_str(file_get_contents("php://input"), $_PUT);
-        if(isset($_PUT['courNom']) && isset($_PUT['courDetail']) && isset($_PUT['courCoach']) && isset($_PUT['courImg']) && isset($_GET["courId"]) && ($_GET["courId"] != null)) {
-            $data = array(
-                'courNom' => $_PUT['courNom'],
-                'courDetail' => $_PUT['courDetail'],
-                'courCoach' => $_PUT['courCoach']
-            );
-            $fileData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $_PUT['courImg']));
-            $filePath = '/path/to/your/directory/' . uniqid() . '.png';
-            file_put_contents($filePath, $fileData);
-            $courId = $_GET["courId"];
-            modifierCour($courId, $data, $filePath);
+        $courId = $_GET['courId'];
+        $contentType = $_SERVER["CONTENT_TYPE"];
+        $types = ['image/jpeg', 'image/png','image/jpg', 'image/gif', 'image/webp', 'image/bmp'];
+        if ($contentType === 'application/json') {
+            $json = file_get_contents('php://input');
+            $data = json_decode($json, true);
+            modifierCour($courId, $data);
+        } else if (in_array($contentType, $types)) {
+            $file = file_get_contents('php://input');
+            modifierCourImg($courId, $file, $contentType);
         } else {
             http_response_code(400);
-            echo json_encode(array("Error: " => "Invalid data or file"));
+            echo json_encode(['error' => 'Invalid Content-Type']);
         }
-        break;
-}
-
+    }
 ?>

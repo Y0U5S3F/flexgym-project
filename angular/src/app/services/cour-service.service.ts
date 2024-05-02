@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cour } from '../Cour';
 import { map } from 'rxjs/operators';
@@ -52,14 +52,26 @@ export class CourService {
   }
 
   //Put
-  updateCour(data: any, file: File, id: number) {
-    const formData: FormData = new FormData();
-    formData.append('courNom', data.courNom);
-    formData.append('courDetail', data.courDetail);
-    formData.append('courCoach', data.courCoach.toString());
-    formData.append('courImg', file, file.name);
+  updateCour(data:any, id:number){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
   
-    return this.http.put<any>(`${this.apiUrlCour}?courId=${id}`, formData)
+    return this.http.put<any>(`${this.apiUrlCour}?courId=${id}`, data, { headers })
+      .pipe(map((res:any)=>{
+        return res;
+      }))
+  }
+
+  updateCourImg(file: File, id: number) {
+    const formData = new FormData();
+    formData.append('file', file);
+  
+    const headers = new HttpHeaders({
+      'Content-Type': file.type
+    });
+  
+    return this.http.put<any>(`${this.apiUrlCour}?courId=${id}`, formData, { headers })
       .pipe(map((res: any) => {
         return res;
       }));

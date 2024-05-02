@@ -101,3 +101,7 @@ table :last-child > :last-child > td {
 .search-input {
   background-color: #000;
 }
+input[type="file"]:disabled {
+  background-color: #000;
+  color: #fff;
+}

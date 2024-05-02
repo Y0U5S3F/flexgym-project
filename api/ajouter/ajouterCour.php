@@ -6,6 +6,7 @@ function ajouterCour($data, $file){
 
         $dir = $_SERVER['DOCUMENT_ROOT'] . '/img/';
         $image = $dir . basename($file['name']);
+        echo($_SERVER['DOCUMENT_ROOT']);
 
         if ($file['error'] !== UPLOAD_ERR_OK) {
             echo json_encode(['error' => 'File upload error: ' . $file['error']]);
@@ -48,5 +49,4 @@ function ajouterCour($data, $file){
         echo json_encode(["error" => "Server error: " . $e->getMessage()]);
     }
 }
-
 ?>
