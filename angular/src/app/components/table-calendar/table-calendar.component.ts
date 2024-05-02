@@ -93,9 +93,11 @@ export class TableCalendarComponent implements OnInit {
     return timeSlot.some(course => course);
   }
 
-  deleteActivite(activiteId: number){
-    this.calendrierService.deleteActivite(activiteId).subscribe(() => {
-      this.loadActivities();
-    });    
+  deleteActivite(activiteId: number) {
+    if (confirm('Are you sure you want to delete this?')) {
+      this.calendrierService.deleteActivite(activiteId).subscribe(() => {
+        this.loadActivities();
+      });
+    }
   }
 }

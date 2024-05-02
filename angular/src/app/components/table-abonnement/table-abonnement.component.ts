@@ -5,7 +5,7 @@ import { ClientService } from '../../services/client-service.service';
 import { Client } from '../../Client';
 import { Offre } from '../../Offre';
 import { OffreService } from '../../services/offre-service.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validator } from '@angular/forms';
 
 @Component({
   selector: 'app-table-abonnement',
@@ -90,9 +90,11 @@ getAbonnements() {
 }
 
 deleteAbonnement(row: any) {
-  this.apiAbonnement.deleteAbonnement(row.abonnementId).subscribe(() => {
-    this.getAllAbonnement();
-  });
+  if (confirm('Are you sure you want to delete this?')) {
+    this.apiAbonnement.deleteAbonnement(row.abonnementId).subscribe(() => {
+      this.getAllAbonnement();
+    });
+  }
 }
 
 onEdit(row: any) {

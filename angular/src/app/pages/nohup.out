@@ -191,3 +191,10 @@ Traceback (most recent call last):
 ImportError: could not import pygtk
 /usr/bin/gimp-2.10: LibGimpBase-WARNING: gimp-2.10: gimp_wire_read(): error
 Gtk-Message: 19:41:30.691: Failed to load module "pk-gtk-module"
+
+** (gedit:78269): WARNING **: 20:39:11.833: AT-SPI: Could not obtain desktop path or name
+
+
+** (gedit:78269): WARNING **: 20:39:11.836: atk-bridge: GetRegisteredEvents returned message with unknown signature
+
+** (gedit:78269): WARNING **: 20:39:11.836: atk-bridge: get_device_events_reply: unknown signature

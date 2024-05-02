@@ -63,9 +63,11 @@ export class TableCoursComponent implements OnInit {
   }
 
   deleteCours(row: any) {
-    this.apiCour.deleteCour(row.courId).subscribe(() => {
-      this.getAllCours();
-    });
+    if (confirm('Are you sure you want to delete this?')) {
+      this.apiCour.deleteCour(row.courId).subscribe(() => {
+        this.getAllCours();
+      });
+    }
   }
 
   onEdit(row: any) {

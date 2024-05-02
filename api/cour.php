@@ -46,19 +46,25 @@ switch ($var) {
         }
         break;    
     case 'PUT':
-        $courId = $_GET['courId'];
-        $contentType = $_SERVER["CONTENT_TYPE"];
-        $types = ['image/jpeg', 'image/png','image/jpg', 'image/gif', 'image/webp', 'image/bmp'];
-        if ($contentType === 'application/json') {
-            $json = file_get_contents('php://input');
-            $data = json_decode($json, true);
-            modifierCour($courId, $data);
-        } else if (in_array($contentType, $types)) {
-            $file = file_get_contents('php://input');
-            modifierCourImg($courId, $file, $contentType);
+        if(isset($_GET['courId'])) {
+            $courId = $_GET['courId'];
+            $contentType = $_SERVER["CONTENT_TYPE"];
+            $types = ['image/jpeg', 'image/png','image/jpg', 'image/gif', 'image/webp', 'image/bmp'];
+            if ($contentType === 'application/json') {
+                $json = file_get_contents('php://input');
+                $data = json_decode($json, true);
+                modifierCour($courId, $data);
+            } else if (in_array($contentType, $types)) {
+                $file = file_get_contents('php://input');
+                modifierCourImg($courId, $file, $contentType);
+            } else {
+                http_response_code(400);
+                echo json_encode(['error' => 'Invalid Content-Type']);
+            }
         } else {
             http_response_code(400);
-            echo json_encode(['error' => 'Invalid Content-Type']);
+            echo json_encode(['error' => 'courId not provided']);
         }
+        break;
     }
 ?>

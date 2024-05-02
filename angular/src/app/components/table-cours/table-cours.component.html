@@ -78,7 +78,8 @@
                   <path d="M14 12V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1zM3 2h10v10H3V2zm3.5 3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm.5 4.5l2-2 1 1 2.5-2.5L14 9v1H2V9l2-2 2.5 2.5 1-1z"/>
                 </svg>
               </span>
-              <input type="file" formControlName="courImg" class="form-control" (change)="onFileChange($event)" required>            </div>
+              <input type="file" class="form-control" (change)="onFileChange($event)" required>
+            </div>
             <div class="d-grid">
               <button type="submit" (click)="updateCours()" class="btn modal-button">Save</button>
             </div>

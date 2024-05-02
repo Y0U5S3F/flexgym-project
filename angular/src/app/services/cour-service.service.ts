@@ -63,17 +63,22 @@ export class CourService {
       }))
   }
 
-  updateCourImg(file: File, id: number) {
-    const formData = new FormData();
-    formData.append('file', file);
-  
-    const headers = new HttpHeaders({
-      'Content-Type': file.type
+  updateCourImg(file: File, id: number): Observable<any> {
+    return new Observable((observer) => {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        const headers = new HttpHeaders({
+          'Content-Type': file.type
+        });
+
+        const arrayBuffer: any = reader.result;
+
+        this.http.put<any>(`${this.apiUrlCour}?courId=${id}`, arrayBuffer, { headers })
+          .subscribe(observer);
+      };
+
+      reader.readAsArrayBuffer(file);
     });
-  
-    return this.http.put<any>(`${this.apiUrlCour}?courId=${id}`, formData, { headers })
-      .pipe(map((res: any) => {
-        return res;
-      }));
   }
 }
