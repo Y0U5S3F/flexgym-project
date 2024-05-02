@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../../services/client-service.service';
 import { Client } from '../../Client';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validator } from '@angular/forms';
 
 @Component({
   selector: 'app-table-client',
@@ -38,9 +38,11 @@ export class TableClientComponent implements OnInit {
   }
 
   deleteClient(row: any) {
-    this.api.deleteClient(row.clientId).subscribe(() => {
-      this.getAllClients();
-    });
+    if (confirm('Are you sure you want to delete this?')) {
+      this.api.deleteClient(row.clientId).subscribe(() => {
+        this.getAllClients();
+      });
+    }
   }
 
   onEdit(row: any) {

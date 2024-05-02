@@ -55,17 +55,17 @@ addCours() {
   };
 
   if (this.Image) {
-    this.apiCour.createCour(courData, this.Image).subscribe(
-      response => {
+    this.apiCour.createCour(courData, this.Image).subscribe({
+      next: response => {
         console.log(response);
         this.formValue.reset();
         let ref = document.getElementById("cancel");
         ref?.click();
       },
-      error => {
+      error: error => {
         console.error(error);
       }
-    );
+    });
   }
 }
 

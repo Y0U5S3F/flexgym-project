@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validator } from '@angular/forms';
 import { PersonnelService } from '../../services/personnel-service.service';
 import { Personnel } from '../../Personnel';
 
@@ -38,9 +38,11 @@ export class TablePersonnelComponent implements OnInit {
   }
 
   deletePersonnel(row: any) {
-    this.personnelService.deletePersonnel(row.personnelId).subscribe(() => {
-      this.getAllPersonnel();
-    });
+    if (confirm('Are you sure you want to delete this?')) {
+      this.personnelService.deletePersonnel(row.personnelId).subscribe(() => {
+        this.getAllPersonnel();
+      });
+    }
   }
 
   onEdit(row: any) {

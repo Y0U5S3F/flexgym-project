@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CourService } from '../../services/cour-service.service';
 import { Cour } from '../../Cour';
-import { PersonnelService } from '../../services/personnel-service.service';
 import { Personnel } from '../../Personnel';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { PersonnelService } from '../../services/personnel-service.service';
 
 @Component({
   selector: 'app-table-cours',
@@ -13,11 +13,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class TableCoursComponent implements OnInit {
   coursData!: any;
   totalLength: any;
+  Image: File | null = null;
   page: number = 1;
   searchText ='';
   personnelData!: Personnel[];
   formValue: FormGroup = new FormGroup({});
   coursObject: Cour = new Cour();
+  selectOptions: { value: number, label: string }[] = [];
 
   constructor(private apiCour: CourService, private apiPersonnel: PersonnelService, private formbuilder: FormBuilder) {}
 
@@ -29,6 +31,18 @@ export class TableCoursComponent implements OnInit {
       courDetail: [''],
       courCoach: ['']
     });
+    this.apiPersonnel.getPersonnels().subscribe(
+      (data: any) => {
+        this.selectOptions = data
+          .filter((personnel: any) => personnel.personnelRole == 'Coach')
+          .map((coach: any) => {
+            return { value: coach.personnelId, label: `${coach.personnelNom} ${coach.personnelPrenom}` };
+          });
+      },
+      (error: any) => {
+        console.error('Error fetching data:', error);
+      }
+    );
   }
 
   getCoachNameById(id: number): string {
@@ -49,9 +63,11 @@ export class TableCoursComponent implements OnInit {
   }
 
   deleteCours(row: any) {
-    this.apiCour.deleteCour(row.courId).subscribe(() => {
-      this.getAllCours();
-    });
+    if (confirm('Are you sure you want to delete this?')) {
+      this.apiCour.deleteCour(row.courId).subscribe(() => {
+        this.getAllCours();
+      });
+    }
   }
 
   onEdit(row: any) {
@@ -66,15 +82,32 @@ export class TableCoursComponent implements OnInit {
     this.coursObject.courDetail = this.formValue.value.courDetail;
     this.coursObject.courCoach = this.formValue.value.courCoach;
   
-    const file = this.formValue.get('courImg')?.value;
-  
-    this.apiCour.updateCour(this.coursObject, file, this.coursObject.courId)
+    this.apiCour.updateCour(this.coursObject, this.coursObject.courId)
     .subscribe((res: any) => {
       alert("Cours updated successfully");
       let ref = document.getElementById("cancel");
       ref?.click();
       this.formValue.reset();
       this.getAllCours();
+  
+      if (this.Image) {
+        this.apiCour.updateCourImg(this.Image, this.coursObject.courId)
+        .subscribe({
+          next: (res: any) => {
+            console.log('Image updated successfully');
+          },
+          error: (err) => {
+            console.error('Failed to update image', err);
+          }
+        });
+      }
     });
+  }
+  
+  onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.Image = file;
+    }
   }
 }

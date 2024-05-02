@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validator } from '@angular/forms';
 import { OffreService } from '../../services/offre-service.service';
 import { Offre } from '../../Offre';
 import { CourService } from '../../services/cour-service.service';
@@ -59,9 +59,11 @@ export class TableOffreComponent implements OnInit {
   }
 
   deleteOffres(row: any) {
-    this.apiOffre.deleteOffre(row.offreId).subscribe(() => {
-      this.getAllOffre();
-    });
+    if (confirm('Are you sure you want to delete this?')) {
+      this.apiOffre.deleteOffre(row.offreId).subscribe(() => {
+        this.getAllOffre();
+      });
+    }
   }
 
   onEdit(row: any) {

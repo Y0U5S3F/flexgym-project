@@ -27,6 +27,7 @@ function ajouterCour($data, $file){
             return;
         }
 
+        $image = str_replace('/opt/lampp/htdocs', '', $image);
         $req = "INSERT INTO cour(courNom,courDetail,courCoach,courImg) 
         Values(:nom,:detail,:coach,:img)";
         $stmt = $connect->prepare($req);
@@ -48,5 +49,4 @@ function ajouterCour($data, $file){
         echo json_encode(["error" => "Server error: " . $e->getMessage()]);
     }
 }
-
 ?>
