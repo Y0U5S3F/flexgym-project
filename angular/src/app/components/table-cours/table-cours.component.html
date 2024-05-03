@@ -22,7 +22,7 @@
           <td>{{row.courNom}}</td>
           <td>{{row.courDetail}}</td>
           <td>{{getCoachNameById(row.courCoach)}}</td>
-          <td><a [href]="'http://localhost:80/' + row.courImg" target="_blank">View Image</a></td>
+          <td><a [href]="'http://localhost:80' + row.courImg" target="_blank">View Image</a></td>
           <td>
             <app-button (click)="onEdit(row)" text="Modifier" data-bs-toggle="modal" data-bs-target="#modifierModal" color="#000" textColor="#E7FE58"></app-button>
             <app-button (click)="deleteCours(row)" text="Annuler" color="#000" textColor="#DC3545"></app-button>
