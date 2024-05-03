@@ -72,10 +72,10 @@ getOffreNameById(id: number): string {
 }
 
 getAllAbonnement() {
-  this.apiAbonnement.getAbonnements().subscribe(
-    res => this.abonnementData = res,
-    error => console.error('Error fetching data for table:', error)
-  );
+  this.apiAbonnement.getAbonnements().subscribe({
+    next: res => this.abonnementData = res,
+    error: error => console.error('Error fetching data for table:', error)
+  });
 }
 
 getAbonnements() {
