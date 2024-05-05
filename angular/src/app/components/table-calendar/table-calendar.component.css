@@ -72,7 +72,7 @@ tr:not(:first-child) {
 }
 
 .activite-container:hover .content {
-    opacity: 0.5;
+    opacity: 0;
 }
 
 .button-container {
@@ -92,6 +92,13 @@ table :last-child > :last-child > td {
 .modal-button {
     background-color: #E7FE58;
     margin-top: 20px;
+}
+
+.submit-button {
+    background-color: #E7FE58;
+    color: #000;
+    margin-right: 10px;
+    
 }
 
 .input-group {
