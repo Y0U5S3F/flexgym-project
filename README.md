@@ -1,4 +1,4 @@
-# ProjectWeb 🌐
+# FlexGym 🌐
 
 This is an Angular project for a gym management system, created with [Angular CLI](https://github.com/angular/angular-cli). The website allows for managing clients, tracking subscriptions, and more. The backend is built with PHP and MySQL, and the project is hosted on XAMPP.
 
