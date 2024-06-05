@@ -38,7 +38,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Here are some screenshots of the application:
 
-![Preview](https://www.behance.net/gallery/200141997/Flex-Gym-Website/modules/1134448903)
+[Preview](https://www.behance.net/gallery/200141997/Flex-Gym-Website/modules/1134448903)
 
 ## Built With 🛠️
 
