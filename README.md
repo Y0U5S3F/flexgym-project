@@ -48,6 +48,6 @@ Here are some screenshots of the application:
 - [XAMPP](https://www.apachefriends.org/index.html) - Web server solution stack
 
 ## Authors 👥
-- **Y0U5S3F** - [Y0U5S3F](https://github.com/Y0U5S3F)
-- **YoNexuss** - [YoNexuss](https://github.com/YoNexuss)
-- **Rippouzza** - [Rippouzza](https://github.com/Rippouzza)
+- **Youssef Saidani** - [Y0U5S3F](https://github.com/Y0U5S3F)
+- **Oussema Zarrouki** - [Oussema Zarrouki](https://github.com/oussemazarrouki)
+- **Rayen Ghileb** - [Rippouzza](https://github.com/Rippouzza)
